@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import NewReservation from '../views/newReservation/index.vue';
+import Home from '../views/Home';
+import NewReservation from '../views/newReservation/index';
 
 Vue.use(VueRouter);
 
