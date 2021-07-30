@@ -1,11 +1,11 @@
 <script>
 export default {
-  name: 'Home',
+  name: 'NewReservation',
 };
 </script>
 
 <template>
   <div>
-    Home
+    NewReservation
   </div>
 </template>
