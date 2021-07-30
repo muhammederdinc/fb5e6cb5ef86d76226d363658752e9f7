@@ -8,7 +8,7 @@ export default {
   <v-app-bar
     app
     flat
-    color="blue darken-4"
+    color="#073763"
     height="100"
     class="px-3"
   >
