@@ -13,7 +13,7 @@ export default {
   <v-app>
     <app-bar />
 
-    <v-main>
+    <v-main class="ma-16">
       <router-view />
     </v-main>
   </v-app>
