@@ -1,4 +1,5 @@
 <script>
+import { mapActions } from 'vuex';
 import ReservationSteps from '@/components/ReservationSteps';
 import HotelDateSelection from './components/HotelDateSelection';
 
@@ -7,6 +8,12 @@ export default {
   components: {
     ReservationSteps,
     HotelDateSelection,
+  },
+  mounted() {
+    this.fetchHotelList();
+  },
+  methods: {
+    ...mapActions(['fetchHotelList']),
   },
 };
 </script>
