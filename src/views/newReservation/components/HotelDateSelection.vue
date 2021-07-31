@@ -1,6 +1,6 @@
 <script>
-import { mapState } from 'vuex';
-import DatePicker from '../../../components/DatePicker';
+import { mapGetters, mapState } from 'vuex';
+import DatePicker from '@/components/DatePicker';
 
 export default {
   name: 'HotelDateSelection',
@@ -10,10 +10,28 @@ export default {
   data() {
     return {
       formData: {},
+      maxAdultSize: 5,
+      childStatus: true,
     };
   },
   computed: {
-    ...mapState(['hotelList']),
+    ...mapState(['hotelList', 'hotelDetailList']),
+    ...mapGetters(['getHotelLimitInfoById']),
+  },
+  methods: {
+    handleHotelChange({ id }) {
+      const {
+        child_status: childStatus,
+        max_adult_size: maxAdultSize,
+      } = this.getHotelLimitInfoById(id);
+
+      if (!childStatus) {
+        this.formData.child = null;
+      }
+
+      this.childStatus = childStatus;
+      this.maxAdultSize = maxAdultSize;
+    },
   },
 };
 </script>
@@ -33,6 +51,7 @@ export default {
           item-text="hotel_name"
           prepend-icon="mdi-city"
           label="Rezervasyon Yapmak İstediğiniz Oteli Seçiniz"
+          @change="handleHotelChange"
         />
       </v-col>
 
@@ -54,6 +73,7 @@ export default {
 
           <v-col cols="3">
             <v-text-field
+              v-model="formData.adult"
               outlined
               dense
               type="number"
@@ -63,10 +83,12 @@ export default {
 
           <v-col cols="3">
             <v-text-field
+              v-model="formData.child"
               outlined
               dense
               type="number"
               label="Çocuk Sayısı"
+              :disabled="!childStatus"
             />
           </v-col>
         </v-row>
