@@ -11,9 +11,10 @@ export default {
   },
   mounted() {
     this.fetchHotelList();
+    this.fetchHotelDetailList();
   },
   methods: {
-    ...mapActions(['fetchHotelList']),
+    ...mapActions(['fetchHotelList', 'fetchHotelDetailList']),
   },
 };
 </script>
