@@ -1,10 +1,12 @@
 <script>
 import { mapMutations } from 'vuex';
 import ReservationStepsActions from '@/components/ReservationStepsActions';
+import HotelReservationPreview from './HotelReservationPreview';
 
 export default {
   name: 'HotelPreviewAndPayment',
   components: {
+    HotelReservationPreview,
     ReservationStepsActions,
   },
   methods: {
@@ -15,7 +17,15 @@ export default {
 
 <template>
   <div>
-    Test
+    <v-row>
+      <v-col cols="7">
+        Test
+      </v-col>
+
+      <v-col cols="5">
+        <hotel-reservation-preview />
+      </v-col>
+    </v-row>
 
     <reservation-steps-actions
       class="pt-6"
