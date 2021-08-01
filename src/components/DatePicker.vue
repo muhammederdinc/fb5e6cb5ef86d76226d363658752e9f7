@@ -6,11 +6,18 @@ export default {
       type: String,
       default: 'Tarih',
     },
+    selected: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({
-    date: null,
+    date: '',
     isMenuVisible: false,
   }),
+  created() {
+    if (this.selected.length) this.date = this.selected;
+  },
   methods: {
     handleDateChange(value) {
       this.isMenuVisible = false;
