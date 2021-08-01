@@ -1,0 +1,157 @@
+<script>
+import { mapState } from 'vuex';
+
+export default {
+  name: 'ThirdStepPreview',
+  computed: {
+    ...mapState(['reservationInformation']),
+    title() {
+      const { hotel, city } = this.reservationInformation;
+
+      return `${hotel.hotel_name} (${city})`;
+    },
+    accommodationPrice() {
+      const { room, start_date: startDate, end_date: endDate } = this.reservationInformation;
+      const dayCount = this.getNumberOfDays(startDate, endDate);
+
+      return room.price * dayCount;
+    },
+    totalPrice() {
+      const { roomScenic } = this.reservationInformation;
+      const additionalPrice = (this.accommodationPrice * roomScenic.price_rate) / 100;
+
+      return this.accommodationPrice + additionalPrice;
+    },
+  },
+  methods: {
+    getNumberOfDays(start, end) {
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      const oneDay = 1000 * 60 * 60 * 24;
+      const diffInTime = endDate.getTime() - startDate.getTime();
+      const diffInDays = Math.round(diffInTime / oneDay);
+
+      return diffInDays;
+    },
+  },
+};
+</script>
+
+<template>
+  <v-card outlined>
+    <v-card-title>
+      <!-- {{ reservationInformation }} -->
+      {{ title }}
+    </v-card-title>
+
+    <v-card-text class="ma-1 text-center">
+      <v-row>
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Giriş Tarihi:</h3>
+            <span>{{ reservationInformation.start_date }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Çıkış Tarihi:</h3>
+            <span>{{ reservationInformation.end_date }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Yetişkin:</h3>
+            <span>{{ reservationInformation.adult }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Çocuk:</h3>
+            <span>{{ reservationInformation.child || 0 }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Oda Tipi:</h3>
+            <span>{{ reservationInformation.room.title }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="6">
+          <v-card class="pa-2" outlined>
+            <h3>Manzara:</h3>
+            <span>{{ reservationInformation.roomScenic.title }}</span>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12">
+          <v-card class="d-flex" outlined>
+            <v-text-field
+              label="Kupon Kodu"
+              class="ma-3"
+              hide-details
+              outlined
+              dense
+            />
+
+            <v-btn
+              color="primary"
+              class="ma-3"
+              depressed
+            >
+              Kodu Kullan
+            </v-btn>
+          </v-card>
+        </v-col>
+
+        <v-col cols="12">
+          <v-card class="d-flex pa-3" outlined>
+            <v-row>
+              <v-col class="text-start" cols="6">
+                Oda Fiyatı:
+              </v-col>
+
+              <v-col class="text-end" cols="6">
+                {{ reservationInformation.room.price }} TL
+              </v-col>
+
+              <v-col class="text-start" cols="6">
+                Fiyat Etki Oranı:
+              </v-col>
+
+              <v-col class="text-end" cols="6">
+                %{{ reservationInformation.roomScenic.price_rate }}
+              </v-col>
+
+              <v-col class="text-start" cols="6">
+                Konaklama (5 Gün)
+              </v-col>
+
+              <v-col class="text-end" cols="6">
+                {{ accommodationPrice }} TL
+              </v-col>
+
+              <v-col class="text-start" cols="6">
+                Indirim (CODE100)
+              </v-col>
+
+              <v-col class="text-end" cols="6">
+                -100 TL
+              </v-col>
+
+              <v-col class="text-end" cols="12">
+                Toplam Tutar
+
+                {{ totalPrice }} TL
+              </v-col>
+            </v-row>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-card-text>
+  </v-card>
+</template>
