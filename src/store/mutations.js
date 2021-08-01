@@ -16,4 +16,7 @@ export default {
     localStorage.setItem('reservationStep', state.reservationStep);
     localStorage.setItem('reservationInformation', JSON.stringify(state.reservationInformation));
   },
+  goToPreviousStep(state) {
+    state.reservationStep -= 1;
+  },
 };

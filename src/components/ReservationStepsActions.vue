@@ -15,7 +15,7 @@ export default {
       <v-btn
         v-if="reservationStep > 1"
         color="primary"
-        @click="$('previousStep')"
+        @click="$emit('previousStep')"
       >
         Geri
       </v-btn>

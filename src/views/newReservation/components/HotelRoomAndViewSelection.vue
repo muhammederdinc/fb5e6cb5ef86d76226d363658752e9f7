@@ -44,7 +44,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations(['goToNextStep']),
+    ...mapMutations(['goToNextStep', 'goToPreviousStep']),
     saveAndContinue() {
       const { room, roomScenic } = this.formData;
 
@@ -85,6 +85,7 @@ export default {
     <reservation-steps-actions
       class="pt-6"
       @nextStep="saveAndContinue"
+      @previousStep="goToPreviousStep"
     />
   </div>
 </template>
