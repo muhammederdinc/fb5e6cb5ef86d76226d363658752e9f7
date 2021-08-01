@@ -5,4 +5,7 @@ export default {
   setHotelDetailList(state, hotelDetailList) {
     state.hotelDetailList = hotelDetailList;
   },
+  incrementReservationStep(state) {
+    state.reservationStep = +1;
+  },
 };
