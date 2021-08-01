@@ -9,4 +9,9 @@ export default {
       .then((response) => response.json())
       .then((data) => commit('setHotelDetailList', data));
   },
+  checkCoupon(_, code) {
+    return fetch(`https://5f6d939160cf97001641b049.mockapi.io/tkn/coupons?code=${code}`)
+      .then((response) => response.json())
+      .then((data) => data);
+  },
 };
