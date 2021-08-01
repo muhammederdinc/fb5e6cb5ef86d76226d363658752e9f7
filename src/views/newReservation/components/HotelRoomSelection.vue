@@ -7,13 +7,27 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      selectedRoom: 0,
+    };
+  },
+  methods: {
+    emitSelectedRoom(selectedRoom) {
+      this.selectedRoom = selectedRoom.id;
+
+      this.$emit('selectedRoom', selectedRoom);
+    },
+  },
 };
 </script>
 
 <template>
   <v-row>
     <v-col cols="12">
-      Oda Tipi Seçimi
+      <h3>
+        Oda Tipi Seçimi
+      </h3>
 
       <v-divider />
     </v-col>
@@ -25,6 +39,8 @@ export default {
     >
       <v-card
         outlined
+        :class="selectedRoom === room.id ? 'active' : ''"
+        @click="emitSelectedRoom(room)"
       >
         <v-card-title primary-title>
           {{ room.title }}
@@ -47,3 +63,9 @@ export default {
     </v-col>
   </v-row>
 </template>
+
+<style lang="scss" scoped>
+.active {
+  border: 3px solid green;
+}
+</style>
