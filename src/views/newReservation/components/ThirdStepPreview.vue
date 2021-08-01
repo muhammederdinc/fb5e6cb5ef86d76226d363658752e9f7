@@ -1,8 +1,14 @@
 <script>
-import { mapState } from 'vuex';
+import { mapActions, mapMutations, mapState } from 'vuex';
 
 export default {
   name: 'ThirdStepPreview',
+  data() {
+    return {
+      discountCode: '',
+      coupon: null,
+    };
+  },
   computed: {
     ...mapState(['reservationInformation']),
     title() {
@@ -19,11 +25,14 @@ export default {
     totalPrice() {
       const { roomScenic } = this.reservationInformation;
       const additionalPrice = (this.accommodationPrice * roomScenic.price_rate) / 100;
+      const discount = this.coupon ? this.coupon.discount_ammount : 0;
 
-      return this.accommodationPrice + additionalPrice;
+      return this.accommodationPrice + additionalPrice - discount;
     },
   },
   methods: {
+    ...mapActions(['checkCoupon']),
+    ...mapMutations(['setCoupon']),
     getNumberOfDays(start, end) {
       const startDate = new Date(start);
       const endDate = new Date(end);
@@ -33,6 +42,12 @@ export default {
 
       return diffInDays;
     },
+    checkCouponByDiscountCode() {
+      this.checkCoupon(this.discountCode)
+        .then(([data]) => {
+          this.coupon = data;
+        });
+    },
   },
 };
 </script>
@@ -40,7 +55,6 @@ export default {
 <template>
   <v-card outlined>
     <v-card-title>
-      <!-- {{ reservationInformation }} -->
       {{ title }}
     </v-card-title>
 
@@ -91,6 +105,7 @@ export default {
         <v-col cols="12">
           <v-card class="d-flex" outlined>
             <v-text-field
+              v-model="discountCode"
               label="Kupon Kodu"
               class="ma-3"
               hide-details
@@ -99,9 +114,10 @@ export default {
             />
 
             <v-btn
-              color="primary"
-              class="ma-3"
               depressed
+              class="ma-3"
+              color="primary"
+              @click="checkCouponByDiscountCode"
             >
               Kodu Kullan
             </v-btn>
