@@ -19,4 +19,7 @@ export default {
   goToPreviousStep(state) {
     state.reservationStep -= 1;
   },
+  setCoupon(state, coupon) {
+    state.reservationInformation.coupon = coupon;
+  },
 };
