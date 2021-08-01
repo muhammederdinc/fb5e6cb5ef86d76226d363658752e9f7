@@ -23,10 +23,20 @@ export default {
       this.$emit('selectedRoom', selectedRoom);
     },
     getRoomPrice({ price }) {
-      const { adult, child, dayCount } = this.reservation;
+      const { adult, child } = this.reservation;
       const totalPeople = adult + child;
+      const dayCount = this.getNumberOfDays(this.reservation.startDate, this.reservation.endDate);
 
       return dayCount * totalPeople * price;
+    },
+    getNumberOfDays(start, end) {
+      const startDate = new Date(start);
+      const endDate = new Date(end);
+      const oneDay = 1000 * 60 * 60 * 24;
+      const diffInTime = endDate.getTime() - startDate.getTime();
+      const diffInDays = Math.round(diffInTime / oneDay);
+
+      return diffInDays;
     },
   },
 };
