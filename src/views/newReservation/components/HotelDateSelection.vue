@@ -45,7 +45,7 @@ export default {
   methods: {
     ...mapMutations(['goToNextStep']),
 
-    handleHotelChange(id) {
+    handleHotelChange({ id }) {
       const {
         child_status: childStatus,
         max_adult_size: maxAdultSize,
@@ -77,12 +77,13 @@ export default {
         <v-row class="pa-10">
           <v-col cols="12">
             <v-autocomplete
-              v-model="formData.hotelId"
+              v-model="formData.hotel"
               :items="hotelList"
               :rules="hotelRules"
               outlined
               clearable
               dense flat
+              return-object
               item-value="id"
               item-text="hotel_name"
               prepend-icon="mdi-city"
