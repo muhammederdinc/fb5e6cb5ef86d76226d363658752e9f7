@@ -43,6 +43,11 @@ export default {
       };
     },
   },
+  created() {
+    const { room = null, roomScenic = null } = this.reservationInformation;
+
+    if (room && roomScenic) this.formData = { room, roomScenic };
+  },
   methods: {
     ...mapMutations(['goToNextStep', 'goToPreviousStep']),
     saveAndContinue() {
@@ -74,11 +79,13 @@ export default {
     <hotel-room-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
       :reservation="reservation"
+      :selected-room-id="formData.room.id || 0"
       @selectedRoom="setSelectedRoom"
     />
 
     <hotel-room-scenic-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_scenic"
+      :selected-room-scenic-id="formData.roomScenic.id || 0"
       @selectedRoomScenic="setSelectedRoomScenic"
     />
 
