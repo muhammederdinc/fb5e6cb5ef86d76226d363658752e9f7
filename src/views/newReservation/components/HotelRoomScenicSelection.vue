@@ -13,8 +13,8 @@ export default {
 <template>
   <v-row>
     <v-col cols="12">
-
       Manzara Seçimi
+
       <v-divider />
     </v-col>
 
@@ -33,7 +33,7 @@ export default {
             height="200"
             :aspect-ratio="16/9"
             :src="room.photo"
-          ></v-img>
+          />
         </v-card-text>
 
         <v-card-actions>

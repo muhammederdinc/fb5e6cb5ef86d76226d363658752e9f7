@@ -35,7 +35,7 @@ export default {
             height="200"
             :aspect-ratio="16/9"
             :src="room.photo"
-          ></v-img>
+          />
         </v-card-text>
 
         <v-card-actions>
