@@ -47,6 +47,7 @@ export default {
 
     handleHotelChange({ id }) {
       const {
+        city,
         child_status: childStatus,
         max_adult_size: maxAdultSize,
       } = this.getHotelDetailById(id);
@@ -55,6 +56,7 @@ export default {
         this.formData.child = null;
       }
 
+      this.formData.city = city;
       this.childStatus = childStatus;
       this.maxAdultSize = maxAdultSize;
     },

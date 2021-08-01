@@ -1,6 +1,6 @@
 export default {
-  reservationStep: 1,
   hotelList: [],
   hotelDetailList: [],
-  reservationInformation: {},
+  reservationStep: localStorage.getItem('reservationStep') || 1,
+  reservationInformation: JSON.parse(localStorage.getItem('reservationInformation')) || {},
 };

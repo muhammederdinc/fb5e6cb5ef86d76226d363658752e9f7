@@ -1,6 +1,6 @@
 <script>
 import ReservationStepsActions from '@/components/ReservationStepsActions';
-import { mapGetters, mapState } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
   name: 'HotelRoomAndViewSelection',
@@ -9,7 +9,6 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
-    ...mapGetters(['getHotelCityById']),
     reservation() {
       const {
         start_date: startDate = null,
@@ -17,9 +16,8 @@ export default {
         adult = null,
         child = null,
         hotel = null,
+        city = null,
       } = this.reservationInformation;
-
-      const city = this.getHotelCityById(hotel.id);
 
       return {
         adult,
@@ -40,7 +38,7 @@ export default {
 
 <template>
   <div>
-    <v-card outlined color="grey lighten-3">
+    <v-card v-if="reservationInformation.hotel" outlined color="grey lighten-3">
       <v-card-title
         primary-title
       >
@@ -67,6 +65,13 @@ export default {
         </v-row>
       </v-card-text>
     </v-card>
+
+    <v-row>
+      <v-col cols="12">
+        Oda Tipi Seçimi
+        <v-divider />
+      </v-col>
+    </v-row>
 
     <reservation-steps-actions
       class="pt-6"

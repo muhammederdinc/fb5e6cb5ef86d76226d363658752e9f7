@@ -25,17 +25,11 @@ export default {
 </script>
 
 <template>
-  <reservation-steps>
-    <template v-if="reservationStep === 1" v-slot:step1>
-      <hotel-date-selection />
-    </template>
+  <div>
+    <reservation-steps class="mb-5" />
 
-    <template v-if="reservationStep === 2" v-slot:step2>
-      <hotel-room-and-view-selection />
-    </template>
+    <hotel-date-selection v-if="reservationStep == 1" />
 
-    <template v-if="reservationStep === 3" v-slot:step3>
-      <h1>Here might be a page title</h1>
-    </template>
-  </reservation-steps>
+    <hotel-room-and-view-selection v-if="reservationStep == 2" />
+  </div>
 </template>
