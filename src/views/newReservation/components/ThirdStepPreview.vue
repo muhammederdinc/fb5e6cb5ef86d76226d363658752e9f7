@@ -17,8 +17,8 @@ export default {
       return `${hotel.hotel_name} (${city})`;
     },
     accommodationPrice() {
-      const { room, start_date: startDate, end_date: endDate } = this.reservationInformation;
-      const dayCount = this.getNumberOfDays(startDate, endDate);
+      const { room } = this.reservationInformation;
+      const dayCount = this.durationOfStay;
 
       return room.price * dayCount;
     },
@@ -28,6 +28,11 @@ export default {
       const discount = this.coupon ? this.coupon.discount_ammount : 0;
 
       return this.accommodationPrice + additionalPrice - discount;
+    },
+    durationOfStay() {
+      const { start_date: startDate, end_date: endDate } = this.reservationInformation;
+
+      return this.getNumberOfDays(startDate, endDate);
     },
   },
   methods: {
@@ -139,29 +144,37 @@ export default {
               </v-col>
 
               <v-col class="text-end" cols="6">
-                %{{ reservationInformation.roomScenic.price_rate }}
+                {{ `%${reservationInformation.roomScenic.price_rate}` }}
               </v-col>
 
               <v-col class="text-start" cols="6">
-                Konaklama (5 Gün)
+                {{ `Konaklama (${durationOfStay} Gün)` }}
               </v-col>
 
               <v-col class="text-end" cols="6">
                 {{ accommodationPrice }} TL
               </v-col>
 
-              <v-col class="text-start" cols="6">
-                Indirim (CODE100)
-              </v-col>
+              <template v-if="coupon">
+                <v-col class="text-start" cols="6">
+                  {{ `İndirim (${coupon.code})` }}
+                </v-col>
 
-              <v-col class="text-end" cols="6">
-                -100 TL
-              </v-col>
+                <v-col class="text-end" cols="6">
+                  {{ `- ${coupon.discount_ammount} TL` }}
+                </v-col>
+              </template>
 
-              <v-col class="text-end" cols="12">
-                Toplam Tutar
+              <v-col class="text-center" cols="12">
+                <v-divider class="mb-2" />
 
-                {{ totalPrice }} TL
+                <h2 class="py-2">
+                  Toplam Tutar
+                </h2>
+
+                <h1 class="py-2">
+                  {{ `${totalPrice} TL` }}
+                </h1>
               </v-col>
             </v-row>
           </v-card>
