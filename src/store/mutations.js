@@ -12,5 +12,8 @@ export default {
     };
 
     state.reservationStep += 1;
+
+    localStorage.setItem('reservationStep', state.reservationStep);
+    localStorage.setItem('reservationInformation', JSON.stringify(state.reservationInformation));
   },
 };
