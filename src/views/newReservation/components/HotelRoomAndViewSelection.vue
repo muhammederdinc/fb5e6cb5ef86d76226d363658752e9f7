@@ -1,5 +1,5 @@
 <script>
-import { mapGetters, mapState } from 'vuex';
+import { mapGetters, mapMutations, mapState } from 'vuex';
 import ReservationStepsActions from '@/components/ReservationStepsActions';
 import HotelDatePreview from './HotelDatePreview';
 import HotelRoomSelection from './HotelRoomSelection';
@@ -12,6 +12,14 @@ export default {
     HotelRoomSelection,
     ReservationStepsActions,
     HotelRoomScenicSelection,
+  },
+  data() {
+    return {
+      formData: {
+        room: {},
+        roomScenic: {},
+      },
+    };
   },
   computed: {
     ...mapState(['reservationInformation']),
@@ -36,8 +44,21 @@ export default {
     },
   },
   methods: {
+    ...mapMutations(['goToNextStep']),
     saveAndContinue() {
-      // this.getHotelNameById();
+      const { room, roomScenic } = this.formData;
+
+      if (room && roomScenic) {
+        this.goToNextStep(this.formData);
+      } else {
+        // to-do warning
+      }
+    },
+    setSelectedRoom(selectedRoom) {
+      this.formData.room = selectedRoom;
+    },
+    setSelectedRoomScenic(selectedRoomScenic) {
+      this.formData.roomScenic = selectedRoomScenic;
     },
   },
 };
@@ -52,10 +73,12 @@ export default {
 
     <hotel-room-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
+      @selectedRoom="setSelectedRoom"
     />
 
     <hotel-room-scenic-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_scenic"
+      @selectedRoomScenic="setSelectedRoomScenic"
     />
 
     <reservation-steps-actions
