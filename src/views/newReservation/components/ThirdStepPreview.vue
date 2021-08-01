@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapMutations, mapState } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'ThirdStepPreview',
