@@ -25,7 +25,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="mx-16">
     <reservation-steps class="mb-5" />
 
     <hotel-date-selection v-if="reservationStep == 1" />
