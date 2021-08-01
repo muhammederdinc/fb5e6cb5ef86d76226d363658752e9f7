@@ -1,7 +1,7 @@
 <script>
 import { mapMutations } from 'vuex';
 import ReservationStepsActions from '@/components/ReservationStepsActions';
-import HotelReservationPreview from './HotelReservationPreview';
+import HotelReservationPreview from '@/components/HotelReservationPreview';
 
 export default {
   name: 'HotelPreviewAndPayment',
