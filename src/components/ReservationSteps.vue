@@ -43,13 +43,13 @@ export default {
       </v-stepper-content>
 
       <v-stepper-content step="2">
-        <slot name="step3">
+        <slot name="step2">
           Step 2
         </slot>
       </v-stepper-content>
 
       <v-stepper-content step="3">
-        <slot name="step2">
+        <slot name="step3">
           Step 3
         </slot>
       </v-stepper-content>
