@@ -6,6 +6,10 @@ export default {
       type: Array,
       required: true,
     },
+    reservation: {
+      type: Object,
+      required: true,
+    },
   },
   data() {
     return {
@@ -17,6 +21,12 @@ export default {
       this.selectedRoom = selectedRoom.id;
 
       this.$emit('selectedRoom', selectedRoom);
+    },
+    getRoomPrice({ price }) {
+      const { adult, child, dayCount } = this.reservation;
+      const totalPeople = adult + child;
+
+      return dayCount * totalPeople * price;
     },
   },
 };
@@ -55,9 +65,20 @@ export default {
         </v-card-text>
 
         <v-card-actions>
+          <div class="d-flex flex-column">
+            <span>
+              {{ reservation.dayCount }} Gün
+            </span>
+
+            <span>
+              Yetişkin: {{ reservation.adult }}
+              Çocuk: {{ reservation.child }}
+            </span>
+          </div>
+
           <v-spacer />
 
-          {{ room.price }} TL
+          {{ getRoomPrice(room) }} TL
         </v-card-actions>
       </v-card>
     </v-col>
