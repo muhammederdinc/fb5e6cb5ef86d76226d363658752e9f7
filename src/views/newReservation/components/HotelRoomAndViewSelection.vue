@@ -1,6 +1,6 @@
 <script>
 import ReservationStepsActions from '@/components/ReservationStepsActions';
-import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 
 export default {
   name: 'HotelRoomAndViewSelection',
@@ -9,6 +9,7 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
+    ...mapGetters(['getHotelDetailById']),
     reservation() {
       const {
         start_date: startDate = null,
@@ -38,7 +39,12 @@ export default {
 
 <template>
   <div>
-    <v-card v-if="reservationInformation.hotel" outlined color="grey lighten-3">
+    <v-card
+      v-if="reservationInformation.hotel"
+      color="grey lighten-3"
+      class="mb-5"
+      outlined
+    >
       <v-card-title
         primary-title
       >
@@ -69,7 +75,70 @@ export default {
     <v-row>
       <v-col cols="12">
         Oda Tipi Seçimi
+
         <v-divider />
+      </v-col>
+
+      <v-col
+        v-for="room in getHotelDetailById(reservationInformation.hotel.id).room_type"
+        :key="room.id"
+        cols="4"
+      >
+        <v-card
+          outlined
+        >
+          <v-card-title primary-title>
+            {{ room.title }}
+          </v-card-title>
+
+          <v-card-text>
+            <v-img
+              height="200"
+              :aspect-ratio="16/9"
+              :src="room.photo"
+            ></v-img>
+          </v-card-text>
+
+          <v-card-actions>
+            <v-spacer />
+
+            {{ room.price }} TL
+          </v-card-actions>
+        </v-card>
+      </v-col>
+
+      <v-col cols="12">
+
+        Manzara Seçimi
+        <v-divider />
+      </v-col>
+
+      <v-col
+        v-for="room in getHotelDetailById(reservationInformation.hotel.id).room_scenic"
+        :key="room.id"
+        cols="4"
+      >
+        <v-card outlined>
+          <v-card-title primary-title>
+            {{ room.title }}
+          </v-card-title>
+
+          <v-card-text>
+            <v-img
+              height="200"
+              :aspect-ratio="16/9"
+              :src="room.photo"
+            ></v-img>
+          </v-card-text>
+
+          <v-card-actions>
+            Fiyat Etki Oranı
+
+            <v-spacer />
+
+            + {{ room.price_rate }} %
+          </v-card-actions>
+        </v-card>
       </v-col>
     </v-row>
 
