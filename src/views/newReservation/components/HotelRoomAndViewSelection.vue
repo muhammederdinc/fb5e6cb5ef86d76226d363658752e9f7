@@ -9,7 +9,7 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
-    ...mapGetters(['getHotelCityInfoById']),
+    ...mapGetters(['getHotelCityById']),
     reservation() {
       const {
         start_date: startDate = null,
@@ -19,7 +19,7 @@ export default {
         hotel = null,
       } = this.reservationInformation;
 
-      const city = this.getHotelCityInfoById(hotel.id);
+      const city = this.getHotelCityById(hotel.id);
 
       return {
         adult,

@@ -34,7 +34,7 @@ export default {
   },
   computed: {
     ...mapState(['hotelList', 'hotelDetailList']),
-    ...mapGetters(['getHotelLimitInfoById']),
+    ...mapGetters(['getHotelDetailById']),
     adultTextFieldLabel() {
       return `Yetişkin Sayısı (Limit: ${this.maxAdultSize})`;
     },
@@ -49,7 +49,7 @@ export default {
       const {
         child_status: childStatus,
         max_adult_size: maxAdultSize,
-      } = this.getHotelLimitInfoById(id);
+      } = this.getHotelDetailById(id);
 
       if (!childStatus) {
         this.formData.child = null;

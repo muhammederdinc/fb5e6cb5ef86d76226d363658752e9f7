@@ -1,5 +1,4 @@
 export default {
-  getHotelLimitInfoById: (state) => (id) => state.hotelDetailList.find((hotel) => hotel.id === id),
-  getHotelCityInfoById: (state) => (id) => state.hotelDetailList
-    .find((hotel) => hotel.id === id).city,
+  getHotelDetailById: (state) => (id) => state.hotelDetailList.find((hotel) => hotel.id === id),
+  getHotelCityById: (state) => (id) => state.hotelDetailList.find((hotel) => hotel.id === id).city,
 };
