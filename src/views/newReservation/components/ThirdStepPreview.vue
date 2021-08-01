@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     ...mapActions(['checkCoupon']),
-    ...mapMutations(['setCoupon']),
     getNumberOfDays(start, end) {
       const startDate = new Date(start);
       const endDate = new Date(end);
