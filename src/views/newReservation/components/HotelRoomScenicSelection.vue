@@ -6,11 +6,18 @@ export default {
       type: Array,
       required: true,
     },
+    selectedRoomScenicId: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       selectedRoomScenic: 0,
     };
+  },
+  created() {
+    if (this.selectedRoomScenicId) this.selectedRoomScenic = this.selectedRoomScenicId;
   },
   methods: {
     emitSelectedRoomScenic(selectedRoomScenic) {

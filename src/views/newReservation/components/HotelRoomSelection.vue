@@ -10,11 +10,18 @@ export default {
       type: Object,
       required: true,
     },
+    selectedRoomId: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       selectedRoom: 0,
     };
+  },
+  created() {
+    if (this.selectedRoomId) this.selectedRoom = this.selectedRoomId;
   },
   methods: {
     emitSelectedRoom(selectedRoom) {
