@@ -10,7 +10,10 @@ export default {
 </script>
 
 <template>
-  <v-stepper v-model="reservationStep">
+  <v-stepper
+    v-model="reservationStep"
+    outlined
+  >
     <v-stepper-header>
       <v-stepper-step
         :complete="reservationStep > 1"
@@ -34,25 +37,5 @@ export default {
         Önizleme Ve Ödeme İşlemleri
       </v-stepper-step>
     </v-stepper-header>
-
-    <v-stepper-items>
-      <v-stepper-content step="1">
-        <slot name="step1">
-          Step 1
-        </slot>
-      </v-stepper-content>
-
-      <v-stepper-content step="2">
-        <slot name="step2">
-          Step 2
-        </slot>
-      </v-stepper-content>
-
-      <v-stepper-content step="3">
-        <slot name="step3">
-          Step 3
-        </slot>
-      </v-stepper-content>
-    </v-stepper-items>
   </v-stepper>
 </template>
