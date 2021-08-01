@@ -2,10 +2,12 @@
 import { mapMutations } from 'vuex';
 import ReservationStepsActions from '@/components/ReservationStepsActions';
 import HotelReservationPreview from '@/components/HotelReservationPreview';
+import PaymentForm from './PaymentForm';
 
 export default {
   name: 'HotelPreviewAndPayment',
   components: {
+    PaymentForm,
     HotelReservationPreview,
     ReservationStepsActions,
   },
@@ -19,7 +21,7 @@ export default {
   <div>
     <v-row>
       <v-col cols="7">
-        Test
+        <payment-form />
       </v-col>
 
       <v-col cols="5">
