@@ -48,7 +48,7 @@ export default {
     saveAndContinue() {
       const { room, roomScenic } = this.formData;
 
-      if (room && roomScenic) {
+      if (room.id && roomScenic.id) {
         this.goToNextStep(this.formData);
       } else {
         // to-do warning
@@ -73,6 +73,7 @@ export default {
 
     <hotel-room-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
+      :reservation="reservation"
       @selectedRoom="setSelectedRoom"
     />
 
