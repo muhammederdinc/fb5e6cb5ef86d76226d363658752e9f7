@@ -33,7 +33,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(['hotelList', 'hotelDetailList']),
+    ...mapState(['hotelList', 'hotelDetailList', 'reservationInformation']),
     ...mapGetters(['getHotelDetailById']),
     adultTextFieldLabel() {
       return `Yetişkin Sayısı (Limit: ${this.maxAdultSize})`;
@@ -41,6 +41,11 @@ export default {
     childTextFieldLabel() {
       return `${!this.childStatus ? 'Çocuk Ziyaretçi Kabul Edilmiyor' : 'Çocuk Sayısı (Limit: 5)'}`;
     },
+  },
+  created() {
+    if (this.reservationInformation.hotel) {
+      this.formData = this.reservationInformation;
+    }
   },
   methods: {
     ...mapMutations(['goToNextStep']),
@@ -99,6 +104,7 @@ export default {
               <v-col cols="3">
                 <date-picker
                   v-model="formData.start_date"
+                  :selected="formData.start_date"
                   :rules="dateRules"
                   label="Giriş Tarihi"
                 />
@@ -107,6 +113,7 @@ export default {
               <v-col cols="3">
                 <date-picker
                   v-model="formData.end_date"
+                  :selected="formData.start_date"
                   :rules="dateRules"
                   label="Çıkış Tarihi"
                 />
