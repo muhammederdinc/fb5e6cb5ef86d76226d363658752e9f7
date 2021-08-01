@@ -1,19 +1,19 @@
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'ReservationSteps',
-  data() {
-    return {
-      step: 1,
-    };
+  computed: {
+    ...mapState(['reservationStep']),
   },
 };
 </script>
 
 <template>
-  <v-stepper v-model="step">
+  <v-stepper v-model="reservationStep">
     <v-stepper-header>
       <v-stepper-step
-        :complete="step > 1"
+        :complete="reservationStep > 1"
         step="1"
       >
         Otel Ve Tarih Seçimi
@@ -22,7 +22,7 @@ export default {
       <v-divider />
 
       <v-stepper-step
-        :complete="step > 2"
+        :complete="reservationStep > 2"
         step="2"
       >
         Otel Tipi Ve Manzara Seçimi
