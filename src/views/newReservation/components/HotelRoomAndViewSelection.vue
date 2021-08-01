@@ -2,12 +2,16 @@
 import { mapGetters, mapState } from 'vuex';
 import ReservationStepsActions from '@/components/ReservationStepsActions';
 import HotelDatePreview from './HotelDatePreview';
+import HotelRoomSelection from './HotelRoomSelection';
+import HotelRoomScenicSelection from './HotelRoomScenicSelection';
 
 export default {
   name: 'HotelRoomAndViewSelection',
   components: {
     HotelDatePreview,
+    HotelRoomSelection,
     ReservationStepsActions,
+    HotelRoomScenicSelection,
   },
   computed: {
     ...mapState(['reservationInformation']),
@@ -46,75 +50,13 @@ export default {
       :reservation="reservation"
     />
 
-    <v-row>
-      <v-col cols="12">
-        Oda Tipi Seçimi
+    <hotel-room-selection
+      :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
+    />
 
-        <v-divider />
-      </v-col>
-
-      <v-col
-        v-for="room in getHotelDetailById(reservationInformation.hotel.id).room_type"
-        :key="room.id"
-        cols="4"
-      >
-        <v-card
-          outlined
-        >
-          <v-card-title primary-title>
-            {{ room.title }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-img
-              height="200"
-              :aspect-ratio="16/9"
-              :src="room.photo"
-            ></v-img>
-          </v-card-text>
-
-          <v-card-actions>
-            <v-spacer />
-
-            {{ room.price }} TL
-          </v-card-actions>
-        </v-card>
-      </v-col>
-
-      <v-col cols="12">
-
-        Manzara Seçimi
-        <v-divider />
-      </v-col>
-
-      <v-col
-        v-for="room in getHotelDetailById(reservationInformation.hotel.id).room_scenic"
-        :key="room.id"
-        cols="4"
-      >
-        <v-card outlined>
-          <v-card-title primary-title>
-            {{ room.title }}
-          </v-card-title>
-
-          <v-card-text>
-            <v-img
-              height="200"
-              :aspect-ratio="16/9"
-              :src="room.photo"
-            ></v-img>
-          </v-card-text>
-
-          <v-card-actions>
-            Fiyat Etki Oranı
-
-            <v-spacer />
-
-            + {{ room.price_rate }} %
-          </v-card-actions>
-        </v-card>
-      </v-col>
-    </v-row>
+    <hotel-room-scenic-selection
+      :room-list="getHotelDetailById(reservationInformation.hotel.id).room_scenic"
+    />
 
     <reservation-steps-actions
       class="pt-6"
