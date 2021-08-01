@@ -2,7 +2,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: 'ThirdStepPreview',
+  name: 'HotelReservationPreview',
   data() {
     return {
       discountCode: '',
@@ -161,7 +161,7 @@ export default {
                 </v-col>
 
                 <v-col class="text-end" cols="6">
-                  {{ `- ${coupon.discount_ammount} TL` }}
+                  {{ `-${coupon.discount_ammount} TL` }}
                 </v-col>
               </template>
 
