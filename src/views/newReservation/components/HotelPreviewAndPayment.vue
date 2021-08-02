@@ -14,13 +14,14 @@ export default {
   data() {
     return {
       formData: {},
+      isSaveCardInfo: false,
     };
   },
   computed: {
     ...mapState(['reservationInformation']),
   },
   methods: {
-    ...mapMutations(['goToPreviousStep']),
+    ...mapMutations(['goToPreviousStep', 'goToNextStep']),
     ...mapActions(['submitHotelReservation']),
     submit() {
       const isDataValid = this.$refs.paymentForm.$refs.form.validate();
@@ -41,6 +42,8 @@ export default {
           room_scenic: this.reservationInformation.roomScenic.id,
         };
 
+        if (this.isSaveCardInfo) this.updateReservationInformation();
+
         this.submitHotelReservation(params);
       }
     },
@@ -49,6 +52,14 @@ export default {
     },
     setCouponCode(newCoupon) {
       this.formData.coupon_code = newCoupon.code;
+    },
+    updateReservationInformation() {
+      const { coupon_code: couponCode, price, ...cardParams } = this.formData;
+
+      this.goToNextStep(cardParams);
+    },
+    setIsSaveCardInfo(isSaveCardInfo) {
+      this.isSaveCardInfo = isSaveCardInfo;
     },
   },
 };
@@ -61,6 +72,7 @@ export default {
         <payment-form
           ref="paymentForm"
           :form-data="formData"
+          @changeUserCardPreference="setIsSaveCardInfo"
         />
       </v-col>
 
