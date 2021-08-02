@@ -11,7 +11,7 @@ export default {
       ...reservationInformation,
     };
 
-    state.reservationStep += 1;
+    if (state.reservationStep !== 3) state.reservationStep += 1;
 
     localStorage.setItem('reservationStep', state.reservationStep);
     localStorage.setItem('reservationInformation', JSON.stringify(state.reservationInformation));
