@@ -3,6 +3,12 @@ import { mapActions, mapState } from 'vuex';
 
 export default {
   name: 'HotelReservationPreview',
+  props: {
+    preview: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       discountCode: '',
@@ -120,7 +126,10 @@ export default {
           </v-card>
         </v-col>
 
-        <v-col cols="12">
+        <v-col
+          v-if="!preview"
+          cols="12"
+        >
           <v-card class="d-flex" outlined>
             <v-text-field
               v-model="discountCode"

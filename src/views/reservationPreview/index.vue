@@ -19,6 +19,7 @@ export default {
 
     <hotel-reservation-preview
       class="mx-16"
+      preview
     />
   </div>
 </template>
