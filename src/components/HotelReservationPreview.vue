@@ -13,6 +13,7 @@ export default {
     return {
       discountCode: '',
       coupon: null,
+      isLoading: false,
     };
   },
   computed: {
@@ -56,6 +57,8 @@ export default {
       return diffInDays;
     },
     checkCouponByDiscountCode() {
+      this.isLoading = true;
+
       this.checkCoupon(this.discountCode)
         .then(([data]) => {
           this.coupon = null;
@@ -70,6 +73,9 @@ export default {
               this.$emit('coupon', this.coupon);
             }
           }
+        })
+        .finally(() => {
+          this.isLoading = false;
         });
     },
   },
@@ -144,6 +150,8 @@ export default {
               depressed
               class="ma-3"
               color="primary"
+              :loading="isLoading"
+              :disabled="discountCode.length < 1"
               @click="checkCouponByDiscountCode"
             >
               Kodu Kullan

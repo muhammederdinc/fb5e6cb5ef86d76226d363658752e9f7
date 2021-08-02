@@ -3,7 +3,7 @@ import HotelReservationPreview from '@/components/HotelReservationPreview';
 import ReservationPreviewActions from './components/ReservationPreviewActions';
 
 export default {
-  name: 'reservationPreview',
+  name: 'ReservationPreview',
   components: {
     HotelReservationPreview,
     ReservationPreviewActions,
