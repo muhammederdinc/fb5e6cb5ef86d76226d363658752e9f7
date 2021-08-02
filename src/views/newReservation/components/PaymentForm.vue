@@ -24,6 +24,11 @@ export default {
       ],
     };
   },
+  methods: {
+    emitUserCardPreference(newUserCardPreference) {
+      this.$emit('changeUserCardPreference', newUserCardPreference);
+    },
+  },
 };
 </script>
 
@@ -32,6 +37,14 @@ export default {
     <v-card outlined>
       <v-card-title primary-title>
         Kredi Kartı Bilgileri
+
+        <v-spacer />
+
+        <v-switch
+          color="success"
+          label="Kart Bilgilerimi Kaydet"
+          @change="emitUserCardPreference"
+        />
       </v-card-title>
 
       <v-card-text>
