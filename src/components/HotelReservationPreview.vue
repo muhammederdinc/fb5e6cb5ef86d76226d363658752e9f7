@@ -49,7 +49,16 @@ export default {
     checkCouponByDiscountCode() {
       this.checkCoupon(this.discountCode)
         .then(([data]) => {
-          this.coupon = data;
+          this.coupon = null;
+
+          if (data && data.id) {
+            const couponExpirationDate = new Date(data.expiration_at);
+            const currentDate = new Date();
+
+            if (currentDate.getTime() < couponExpirationDate.getTime()) {
+              this.coupon = data;
+            }
+          }
         });
     },
   },
