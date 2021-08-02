@@ -1,4 +1,5 @@
 <script>
+import { mapMutations } from 'vuex';
 import HotelReservationPreview from '@/components/HotelReservationPreview';
 import ReservationPreviewActions from './components/ReservationPreviewActions';
 
@@ -9,7 +10,9 @@ export default {
     ReservationPreviewActions,
   },
   methods: {
-    newReservation() {
+    ...mapMutations(['clearReservation']),
+    createReservation() {
+      this.clearReservation();
       this.$router.push('/new-reservation');
     },
   },
@@ -20,7 +23,7 @@ export default {
   <div>
     <reservation-preview-actions
       class="mx-16"
-      @newReservation="newReservation"
+      @newReservation="createReservation"
     />
 
     <hotel-reservation-preview

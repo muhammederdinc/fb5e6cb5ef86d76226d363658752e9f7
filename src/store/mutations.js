@@ -19,4 +19,10 @@ export default {
   goToPreviousStep(state) {
     state.reservationStep -= 1;
   },
+  clearReservation(state) {
+    state.reservationInformation = {};
+    state.reservationStep = 1;
+
+    localStorage.clear();
+  },
 };

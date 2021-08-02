@@ -44,7 +44,10 @@ export default {
 
         if (this.isSaveCardInfo) this.updateReservationInformation();
 
-        this.submitHotelReservation(params);
+        this.submitHotelReservation(params)
+          .then(() => {
+            this.$router.push('/reservation-preview');
+          });
       }
     },
     setTotalPrice(newTotalPrice) {
