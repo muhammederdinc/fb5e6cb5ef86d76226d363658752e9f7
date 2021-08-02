@@ -8,6 +8,11 @@ export default {
     HotelReservationPreview,
     ReservationPreviewActions,
   },
+  methods: {
+    newReservation() {
+      this.$router.push('/new-reservation');
+    },
+  },
 };
 </script>
 
@@ -15,6 +20,7 @@ export default {
   <div>
     <reservation-preview-actions
       class="mx-16"
+      @newReservation="newReservation"
     />
 
     <hotel-reservation-preview

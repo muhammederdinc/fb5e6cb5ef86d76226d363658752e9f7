@@ -34,6 +34,7 @@ export default {
       <v-btn
         v-text="'Yeni Rezervasyon Yap'"
         color="primary"
+        @click="$emit('newReservation')"
       />
 
       <v-btn
