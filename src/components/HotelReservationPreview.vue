@@ -26,8 +26,11 @@ export default {
       const { roomScenic } = this.reservationInformation;
       const additionalPrice = (this.accommodationPrice * roomScenic.price_rate) / 100;
       const discount = this.coupon ? this.coupon.discount_ammount : 0;
+      const result = this.accommodationPrice + additionalPrice - discount;
 
-      return this.accommodationPrice + additionalPrice - discount;
+      this.$emit('totalPrice', result);
+
+      return result;
     },
     durationOfStay() {
       const { start_date: startDate, end_date: endDate } = this.reservationInformation;
@@ -57,6 +60,8 @@ export default {
 
             if (currentDate.getTime() < couponExpirationDate.getTime()) {
               this.coupon = data;
+
+              this.$emit('coupon', this.coupon);
             }
           }
         });
