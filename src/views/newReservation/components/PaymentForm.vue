@@ -72,6 +72,7 @@ export default {
                 v-model="formData.card_number"
                 dense
                 outlined
+                type="number"
                 :rules="cardNumberRules"
                 label="Kart Numarasını Giriniz"
               />
@@ -105,7 +106,7 @@ export default {
                 :rules="ccvRules"
                 dense
                 outlined
-                mask="###"
+                type="number"
                 label="CCV"
                 return-masked-value
               />
