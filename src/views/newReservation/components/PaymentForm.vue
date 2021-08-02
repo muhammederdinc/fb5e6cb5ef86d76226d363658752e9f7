@@ -1,11 +1,6 @@
 <script>
-import CreditCardForm from '@/components/CreditCard';
-
 export default {
   name: 'PaymentForm',
-  components: {
-    CreditCardForm,
-  },
   data() {
     return {
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
@@ -25,7 +20,7 @@ export default {
       <v-card-text>
         <v-row>
           <v-col cols="12">
-            <credit-card-form />
+            Card
           </v-col>
 
           <v-col cols="12">
