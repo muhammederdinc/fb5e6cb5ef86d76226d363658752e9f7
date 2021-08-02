@@ -46,6 +46,9 @@ export default {
 
         this.submitHotelReservation(params)
           .then(() => {
+            const params = { price: this.formData.price };
+
+            this.goToNextStep(params);
             this.$router.push('/reservation-preview');
           });
       }

@@ -30,10 +30,9 @@ export default {
       return room.price * dayCount;
     },
     totalPrice() {
-      const { roomScenic } = this.reservationInformation;
-      const additionalPrice = (this.accommodationPrice * roomScenic.price_rate) / 100;
+      const { price } = this.reservationInformation;
       const discount = this.coupon ? this.coupon.discount_ammount : 0;
-      const result = this.accommodationPrice + additionalPrice - discount;
+      const result = price - discount;
 
       this.$emit('totalPrice', result);
 
