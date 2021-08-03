@@ -1,6 +1,6 @@
 export default {
   getHotelDetailById: (state) => (id) => state.hotelDetailList.find((hotel) => hotel.id === id),
-  getRoomList: (state) => {
+  roomList: (state) => {
     const { id } = state.reservationInformation.hotel;
 
     return state.hotelDetailList.find((hotel) => hotel.id === id);
