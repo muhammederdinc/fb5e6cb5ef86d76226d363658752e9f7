@@ -8,7 +8,7 @@ export default {
   setCreditCard(state, creditCard) {
     state.creditCard = creditCard;
 
-    localStorage.setItem('creditCard', creditCard);
+    localStorage.setItem('creditCard', JSON.stringify(creditCard));
   },
   goToNextStep(state, reservationInformation) {
     state.reservationInformation = {
