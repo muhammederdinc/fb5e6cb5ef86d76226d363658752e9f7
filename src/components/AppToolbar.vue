@@ -8,8 +8,8 @@ export default {
     newReservation() {
       const { fullPath } = this.$router.currentRoute;
 
-      if (fullPath !== '/new-reservation') {
-        this.$router.push('/new-reservation');
+      if (fullPath !== '/') {
+        this.$router.push('/');
       }
 
       this.clearReservation();

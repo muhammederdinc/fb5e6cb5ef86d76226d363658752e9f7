@@ -28,14 +28,10 @@ export default {
     ...mapMutations(['clearReservation', 'setReservationStep']),
     createReservation() {
       this.clearReservation();
-      this.$router.push('/new-reservation');
+      this.$router.push('/');
     },
     updateReservation() {
       this.setReservationStep(1);
-      this.$router.push('/new-reservation');
-    },
-    cancelReservation() {
-      this.clearReservation();
       this.$router.push('/');
     },
   },
@@ -52,6 +48,7 @@ export default {
     />
 
     <app-hotel-reservation-preview
+      v-if="reservationInformation.hotel"
       class="mx-16"
       preview
     />
@@ -60,7 +57,7 @@ export default {
       v-if="isConfirmDialogVisible"
       text="Rezervasyon kaydınızı iptal etmek istediğinize emin misiniz?"
       @cancel="isConfirmDialogVisible = false"
-      @confirm="cancelReservation"
+      @confirm="createReservation"
     />
   </div>
 </template>
