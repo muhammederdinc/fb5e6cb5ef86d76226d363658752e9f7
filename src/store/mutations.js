@@ -5,6 +5,9 @@ export default {
   setHotelDetailList(state, hotelDetailList) {
     state.hotelDetailList = hotelDetailList;
   },
+  setCreditCard(state, creditCard) {
+    state.creditCard = creditCard;
+  },
   goToNextStep(state, reservationInformation) {
     state.reservationInformation = {
       ...state.reservationInformation,

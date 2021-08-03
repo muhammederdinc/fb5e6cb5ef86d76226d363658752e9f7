@@ -18,10 +18,13 @@ export default {
     };
   },
   computed: {
-    ...mapState(['reservationInformation']),
+    ...mapState(['reservationInformation', 'creditCard']),
+  },
+  created() {
+    if (this.creditCard.card_number) this.formData = this.creditCard;
   },
   methods: {
-    ...mapMutations(['goToPreviousStep', 'goToNextStep']),
+    ...mapMutations(['goToPreviousStep', 'goToNextStep', 'setCreditCard']),
     ...mapActions(['submitHotelReservation']),
     submit() {
       const isDataValid = this.$refs.paymentForm.$refs.form.validate();
@@ -62,7 +65,7 @@ export default {
     updateReservationInformation() {
       const { coupon_code: couponCode, price, ...cardParams } = this.formData;
 
-      this.goToNextStep(cardParams);
+      this.setCreditCard(cardParams);
     },
     setIsSaveCardInfo(isSaveCardInfo) {
       this.isSaveCardInfo = isSaveCardInfo;
