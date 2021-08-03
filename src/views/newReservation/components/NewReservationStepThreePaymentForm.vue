@@ -29,6 +29,13 @@ export default {
       ],
     };
   },
+  computed: {
+    creditCardDate() {
+      const { card_date_month: month, card_date_year: year } = this.formData;
+
+      return `${month}/${year}`;
+    },
+  },
   methods: {
     emitUserCardPreference(newUserCardPreference) {
       this.$emit('changeUserCardPreference', newUserCardPreference);
@@ -40,18 +47,6 @@ export default {
 <template>
   <div>
     <v-card outlined>
-      <v-card-title primary-title>
-        Kredi Kartı Bilgileri
-
-        <v-spacer />
-
-        <v-switch
-          color="success"
-          label="Kart Bilgilerimi Kaydet"
-          @change="emitUserCardPreference"
-        />
-      </v-card-title>
-
       <v-card-text>
         <v-form
           ref="form"
@@ -61,6 +56,19 @@ export default {
             <v-col cols="12">
               <app-credit-card
                 :number="formData.card_number"
+                :ccv="formData.card_cvv"
+                :date="creditCardDate"
+              />
+            </v-col>
+
+            <v-col class="d-flex justify-end" cols="12">
+              <v-switch
+                color="success"
+                label="Kart Bilgilerimi Kaydet"
+                dense
+                hide-details
+                class="ma-0 pa-0"
+                @change="emitUserCardPreference"
               />
             </v-col>
 

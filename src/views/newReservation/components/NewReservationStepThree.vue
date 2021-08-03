@@ -88,7 +88,11 @@ export default {
 <template>
   <div>
     <v-row>
-      <v-col cols="12" xs="12" sm="12" md="7" lg="7">
+      <v-col
+        cols="12" xs="12"
+        sm="12" md="6"
+        lg="6"
+      >
         <new-reservation-step-three-payment-form
           ref="paymentForm"
           :form-data="formData"
@@ -96,7 +100,11 @@ export default {
         />
       </v-col>
 
-      <v-col cols="12" xs="12" sm="12" md="5" lg="5">
+      <v-col
+        cols="12" xs="12"
+        sm="12" md="6"
+        lg="6"
+      >
         <app-hotel-reservation-preview
           @totalPrice="setTotalPrice"
           @coupon="setCouponCode"
