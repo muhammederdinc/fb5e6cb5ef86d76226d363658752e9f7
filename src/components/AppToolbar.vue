@@ -1,6 +1,11 @@
 <script>
+import { mapMutations } from 'vuex';
+
 export default {
   name: 'AppToolbar',
+  methods: {
+    ...mapMutations(['clearReservation']),
+  },
 };
 </script>
 
@@ -19,6 +24,9 @@ export default {
 
     <v-spacer />
 
-    <v-btn>Yeni Rezervasyon Yap</v-btn>
+    <v-btn
+      v-text="'Yeni Rezervasyon Yap'"
+      @click="clearReservation"
+    />
   </v-app-bar>
 </template>
