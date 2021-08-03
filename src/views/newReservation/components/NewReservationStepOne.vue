@@ -49,20 +49,22 @@ export default {
   },
   methods: {
     ...mapMutations(['goToNextStep']),
-    handleHotelChange({ id }) {
-      const {
-        city,
-        child_status: childStatus,
-        max_adult_size: maxAdultSize,
-      } = this.getHotelDetailById(id);
+    handleHotelChange(selectedHotel) {
+      if (selectedHotel) {
+        const {
+          city,
+          child_status: childStatus,
+          max_adult_size: maxAdultSize,
+        } = this.getHotelDetailById(selectedHotel.id);
 
-      if (!childStatus) {
-        this.formData.child = null;
+        if (!childStatus) {
+          this.formData.child = null;
+        }
+
+        this.formData.city = city;
+        this.childStatus = childStatus;
+        this.maxAdultSize = maxAdultSize;
       }
-
-      this.formData.city = city;
-      this.childStatus = childStatus;
-      this.maxAdultSize = maxAdultSize;
     },
     saveAndContinue() {
       const isDataValid = this.$refs.form.validate();
