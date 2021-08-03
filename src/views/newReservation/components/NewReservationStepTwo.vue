@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
-    ...mapGetters(['getHotelDetailById', 'durationOfStay']),
+    ...mapGetters(['getHotelDetailById', 'durationOfStay', 'getRoomList']),
     reservation() {
       const {
         start_date: startDate = null,
@@ -97,14 +97,14 @@ export default {
     />
 
     <new-reservation-step-two-room-selection
-      :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
+      :room-list="getRoomList.room_type"
       :reservation="reservation"
       :selected-room-id="formData.room.id || 0"
       @selectedRoom="setSelectedRoom"
     />
 
     <new-reservation-step-two-room-scenic-selection
-      :room-list="getHotelDetailById(reservationInformation.hotel.id).room_scenic"
+      :room-list="getRoomList.room_scenic"
       :selected-room-scenic-id="formData.roomScenic.id || 0"
       @selectedRoomScenic="setSelectedRoomScenic"
     />

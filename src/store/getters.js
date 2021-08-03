@@ -1,5 +1,10 @@
 export default {
   getHotelDetailById: (state) => (id) => state.hotelDetailList.find((hotel) => hotel.id === id),
+  getRoomList: (state) => {
+    const { id } = state.reservationInformation.hotel;
+
+    return state.hotelDetailList.find((hotel) => hotel.id === id);
+  },
   durationOfStay: (state) => {
     const startDate = new Date(state.reservationInformation.start_date);
     const endDate = new Date(state.reservationInformation.end_date);
