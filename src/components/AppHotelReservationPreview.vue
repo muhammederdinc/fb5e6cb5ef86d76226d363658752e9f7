@@ -94,42 +94,42 @@ export default {
 
     <v-card-text class="ma-1 text-center">
       <v-row>
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Giriş Tarihi:</h3>
             <span>{{ reservationInformation.start_date }}</span>
           </v-card>
         </v-col>
 
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Çıkış Tarihi:</h3>
             <span>{{ reservationInformation.end_date }}</span>
           </v-card>
         </v-col>
 
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Yetişkin:</h3>
             <span>{{ reservationInformation.adult }}</span>
           </v-card>
         </v-col>
 
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Çocuk:</h3>
             <span>{{ reservationInformation.child || 0 }}</span>
           </v-card>
         </v-col>
 
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Oda Tipi:</h3>
             <span>{{ reservationInformation.room.title }}</span>
           </v-card>
         </v-col>
 
-        <v-col cols="6">
+        <v-col cols="12" xs="12" sm="12" md="6" lg="6">
           <v-card class="pa-2" outlined>
             <h3>Manzara:</h3>
             <span>{{ reservationInformation.roomScenic.title }}</span>

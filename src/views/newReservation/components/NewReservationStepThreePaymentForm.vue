@@ -78,7 +78,7 @@ export default {
               />
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4">
               <v-autocomplete
                 v-model="formData.card_date_month"
                 :items="months"
@@ -89,7 +89,7 @@ export default {
               />
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4">
               <v-autocomplete
                 v-model="formData.card_date_year"
                 :items="years"
@@ -100,7 +100,7 @@ export default {
               />
             </v-col>
 
-            <v-col cols="4">
+            <v-col cols="12" xs="12" sm="12" md="4" lg="4">
               <v-text-field
                 v-model="formData.card_cvv"
                 :rules="ccvRules"

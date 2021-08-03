@@ -20,6 +20,11 @@ export default {
       selectedRoom: 0,
     };
   },
+  computed: {
+    dayCount() {
+      return this.getNumberOfDays(this.reservation.startDate, this.reservation.endDate);
+    },
+  },
   created() {
     if (this.selectedRoomId) this.selectedRoom = this.selectedRoomId;
   },
@@ -32,9 +37,8 @@ export default {
     getRoomPrice({ price }) {
       const { adult, child } = this.reservation;
       const totalPeople = adult + child;
-      const dayCount = this.getNumberOfDays(this.reservation.startDate, this.reservation.endDate);
 
-      return dayCount * totalPeople * price;
+      return this.dayCount * totalPeople * price;
     },
     getNumberOfDays(start, end) {
       const startDate = new Date(start);
@@ -62,7 +66,7 @@ export default {
     <v-col
       v-for="room in roomList"
       :key="room.id"
-      cols="4"
+      cols="12" xs="12" sm="12" md="4" lg="4"
     >
       <v-card
         outlined
@@ -84,7 +88,7 @@ export default {
         <v-card-actions>
           <div class="d-flex flex-column">
             <span>
-              {{ reservation.dayCount }} Gün
+              {{ dayCount }} Gün
             </span>
 
             <span>

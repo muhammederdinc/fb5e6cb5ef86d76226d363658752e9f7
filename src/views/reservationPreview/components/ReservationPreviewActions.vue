@@ -6,7 +6,7 @@ export default {
 
 <template>
   <v-card
-    class="text-center pa-8 mb-4"
+    class="text-center"
     outlined
   >
     <v-card-title
@@ -30,23 +30,34 @@ export default {
       yeni rezervasyon yapmak için aşağıdaki linkleri kullanabilirsiniz.
     </v-card-text>
 
-    <v-card-actions class="d-flex justify-center">
-      <v-btn
-        v-text="'Yeni Rezervasyon Yap'"
-        color="primary"
-        @click="$emit('newReservation')"
-      />
+    <v-card-actions>
+      <v-row justify="center">
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <v-btn
+            v-text="'Yeni Rezervasyon Yap'"
+            color="primary"
+            block
+            @click="$emit('newReservation')"
+          />
+        </v-col>
 
-      <v-btn
-        v-text="'Rezervasyonu Güncelle'"
-        color="primary"
-        @click="$emit('updateReservation')"
-      />
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <v-btn
+            v-text="'Rezervasyonu Güncelle'"
+            color="primary"
+            block
+            @click="$emit('updateReservation')"
+          />
+        </v-col>
 
-      <v-btn
-        v-text="'Rezervasyonu İptal Et'"
-        color="primary"
-      />
+        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+          <v-btn
+            v-text="'Rezervasyonu İptal Et'"
+            color="primary"
+            block
+          />
+        </v-col>
+      </v-row>
     </v-card-actions>
   </v-card>
 </template>

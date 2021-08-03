@@ -42,7 +42,7 @@ export default {
     <v-col
       v-for="room in roomList"
       :key="room.id"
-      cols="4"
+      cols="12" xs="12" sm="12" md="4" lg="4"
     >
       <v-card
         outlined

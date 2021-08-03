@@ -17,7 +17,7 @@ export default {
   <v-app>
     <app-toolbar />
 
-    <v-main class="ma-16">
+    <v-main class="my-8">
       <router-view />
     </v-main>
 

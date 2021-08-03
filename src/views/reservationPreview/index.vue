@@ -26,7 +26,7 @@ export default {
 <template>
   <div>
     <reservation-preview-actions
-      class="mx-16"
+      class="mx-16 mb-6"
       @newReservation="createReservation"
       @updateReservation="updateReservation"
     />

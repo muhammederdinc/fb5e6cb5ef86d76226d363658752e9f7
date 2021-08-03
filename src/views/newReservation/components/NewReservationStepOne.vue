@@ -81,7 +81,11 @@ export default {
         lazy-validation
       >
         <v-row class="pa-10">
-          <v-col cols="12">
+          <v-col class="d-flex" cols="12">
+            <v-icon class="mb-6 mr-3 d-none d-sm-flex">
+              mdi-city
+            </v-icon>
+
             <v-autocomplete
               v-model="formData.hotel"
               :items="hotelList"
@@ -92,7 +96,6 @@ export default {
               return-object
               item-value="id"
               item-text="hotel_name"
-              prepend-icon="mdi-city"
               label="Rezervasyon Yapmak İstediğiniz Oteli Seçiniz"
               @change="handleHotelChange"
             />
@@ -100,7 +103,7 @@ export default {
 
           <v-col cols="12">
             <v-row>
-              <v-col cols="3">
+              <v-col cols="12" xs="12" sm="12" md="3" lg="3">
                 <app-date-picker
                   v-model="formData.start_date"
                   :selected="formData.start_date"
@@ -109,7 +112,7 @@ export default {
                 />
               </v-col>
 
-              <v-col cols="3">
+              <v-col cols="12" xs="12" sm="12" md="3" lg="3">
                 <app-date-picker
                   v-model="formData.end_date"
                   :selected="formData.end_date"
@@ -118,7 +121,7 @@ export default {
                 />
               </v-col>
 
-              <v-col cols="3">
+              <v-col cols="12" xs="12" sm="12" md="3" lg="3">
                 <v-text-field
                   v-model.number="formData.adult"
                   :rules="adultRules"
@@ -129,7 +132,7 @@ export default {
                 />
               </v-col>
 
-              <v-col cols="3">
+              <v-col cols="12" xs="12" sm="12" md="3" lg="3">
                 <v-text-field
                   v-model.number="formData.child"
                   :rules="childRules"
