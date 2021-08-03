@@ -77,7 +77,7 @@ export default {
 
         if (isDataValid) this.goToNextStep(this.formData);
       } else {
-        this.showSnackbar('Bitiş Tarihi Başlangıç Tarihinden Sonra Olmalıdır', 'info');
+        this.showSnackbar('Lütfen Bitiş Tarihini Başlangıç Tarihinden Büyük Olacak Şekilde Giriniz', 'info');
       }
     },
   },

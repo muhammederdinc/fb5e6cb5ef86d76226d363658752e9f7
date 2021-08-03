@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import PageNotFound from '../views/PageNotFound';
 import NewReservation from '../views/newReservation';
 import ReservationPreview from '../views/reservationPreview';
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/reservation-preview',
     name: 'ReservationPreview',
     component: ReservationPreview,
+  },
+  {
+    path: '*',
+    name: 'PageNotFound',
+    component: PageNotFound,
   },
 ];
 
