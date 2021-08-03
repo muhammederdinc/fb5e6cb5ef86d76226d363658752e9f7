@@ -70,7 +70,7 @@ export default {
 
       this.setCreditCard(cardParams);
     },
-    setIsSaveCardInfo(isSaveCardInfo) {
+    setUserCardPreference(isSaveCardInfo) {
       this.isSaveCardInfo = isSaveCardInfo;
     },
   },
@@ -84,7 +84,7 @@ export default {
         <new-reservation-step-three-payment-form
           ref="paymentForm"
           :form-data="formData"
-          @changeUserCardPreference="setIsSaveCardInfo"
+          @changeUserCardPreference="setUserCardPreference"
         />
       </v-col>
 
