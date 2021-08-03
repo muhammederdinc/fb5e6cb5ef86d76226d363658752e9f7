@@ -1,5 +1,5 @@
 <script>
-import { mapActions, mapState } from 'vuex';
+import { mapActions, mapGetters, mapState } from 'vuex';
 import snackbarMixin from '@/mixins/snackbar';
 
 export default {
@@ -20,6 +20,7 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
+    ...mapGetters(['durationOfStay']),
     title() {
       const { hotel, city } = this.reservationInformation;
 
@@ -40,23 +41,9 @@ export default {
 
       return result;
     },
-    durationOfStay() {
-      const { start_date: startDate, end_date: endDate } = this.reservationInformation;
-
-      return this.getNumberOfDays(startDate, endDate);
-    },
   },
   methods: {
     ...mapActions(['checkCoupon']),
-    getNumberOfDays(start, end) {
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      const oneDay = 1000 * 60 * 60 * 24;
-      const diffInTime = endDate.getTime() - startDate.getTime();
-      const diffInDays = Math.round(diffInTime / oneDay);
-
-      return diffInDays;
-    },
     checkCouponByDiscountCode() {
       this.isLoading = true;
 

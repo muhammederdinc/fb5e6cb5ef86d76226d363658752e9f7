@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation']),
-    ...mapGetters(['getHotelDetailById']),
+    ...mapGetters(['getHotelDetailById', 'durationOfStay']),
     reservation() {
       const {
         start_date: startDate = null,
@@ -49,11 +49,6 @@ export default {
       const dayCount = this.durationOfStay;
 
       return room.price * dayCount;
-    },
-    durationOfStay() {
-      const { start_date: startDate, end_date: endDate } = this.reservationInformation;
-
-      return this.getNumberOfDays(startDate, endDate);
     },
   },
   created() {
@@ -89,15 +84,6 @@ export default {
       const result = this.accommodationPrice + additionalPrice;
 
       return result;
-    },
-    getNumberOfDays(start, end) {
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      const oneDay = 1000 * 60 * 60 * 24;
-      const diffInTime = endDate.getTime() - startDate.getTime();
-      const diffInDays = Math.round(diffInTime / oneDay);
-
-      return diffInDays;
     },
   },
 };

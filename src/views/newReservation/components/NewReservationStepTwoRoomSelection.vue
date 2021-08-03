@@ -1,4 +1,6 @@
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'NewReservationStepTwoRoomSelection',
   props: {
@@ -21,9 +23,7 @@ export default {
     };
   },
   computed: {
-    dayCount() {
-      return this.getNumberOfDays(this.reservation.startDate, this.reservation.endDate);
-    },
+    ...mapGetters(['durationOfStay']),
   },
   created() {
     if (this.selectedRoomId) this.selectedRoom = this.selectedRoomId;
@@ -38,16 +38,7 @@ export default {
       const { adult, child } = this.reservation;
       const totalPeople = adult + child;
 
-      return this.dayCount * totalPeople * price;
-    },
-    getNumberOfDays(start, end) {
-      const startDate = new Date(start);
-      const endDate = new Date(end);
-      const oneDay = 1000 * 60 * 60 * 24;
-      const diffInTime = endDate.getTime() - startDate.getTime();
-      const diffInDays = Math.round(diffInTime / oneDay);
-
-      return diffInDays;
+      return this.durationOfStay * totalPeople * price;
     },
   },
 };
@@ -88,7 +79,7 @@ export default {
         <v-card-actions>
           <div class="d-flex flex-column">
             <span>
-              {{ dayCount }} Gün
+              {{ durationOfStay }} Gün
             </span>
 
             <span>
