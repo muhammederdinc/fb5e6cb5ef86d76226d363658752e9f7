@@ -90,7 +90,7 @@ export default {
 
           <v-spacer />
 
-          {{ getRoomPrice(room) }} TL
+          {{ getRoomPrice(room) | currency }}
         </v-card-actions>
       </v-card>
     </v-col>

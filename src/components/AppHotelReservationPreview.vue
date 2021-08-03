@@ -158,7 +158,7 @@ export default {
               </v-col>
 
               <v-col class="text-end" cols="6">
-                {{ reservationInformation.room.price }} TL
+                {{ reservationInformation.room.price | currency }}
               </v-col>
 
               <v-col class="text-start" cols="6">
@@ -174,7 +174,7 @@ export default {
               </v-col>
 
               <v-col class="text-end" cols="6">
-                {{ accommodationPrice }} TL
+                {{ accommodationPrice | currency }}
               </v-col>
 
               <template v-if="coupon">
@@ -183,7 +183,7 @@ export default {
                 </v-col>
 
                 <v-col class="text-end" cols="6">
-                  {{ `-${coupon.discount_ammount} TL` }}
+                  - {{ coupon.discount_ammount | currency }}
                 </v-col>
               </template>
 
@@ -195,7 +195,7 @@ export default {
                 </h2>
 
                 <h1 class="py-2">
-                  {{ `${totalPrice} TL` }}
+                  {{ totalPrice | currency }}
                 </h1>
               </v-col>
             </v-row>

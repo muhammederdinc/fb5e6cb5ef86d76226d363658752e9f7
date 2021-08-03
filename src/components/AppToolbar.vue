@@ -5,6 +5,15 @@ export default {
   name: 'AppToolbar',
   methods: {
     ...mapMutations(['clearReservation']),
+    newReservation() {
+      const { fullPath } = this.$router.currentRoute;
+
+      if (fullPath !== '/new-reservation') {
+        this.$router.push('/new-reservation');
+      }
+
+      this.clearReservation();
+    },
   },
 };
 </script>
@@ -26,7 +35,7 @@ export default {
 
     <v-btn
       v-text="'Yeni Rezervasyon Yap'"
-      @click="clearReservation"
+      @click="newReservation"
     />
   </v-app-bar>
 </template>
