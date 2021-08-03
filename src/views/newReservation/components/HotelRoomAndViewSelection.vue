@@ -1,6 +1,6 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
-import ReservationStepsActions from '@/components/ReservationStepsActions';
+import StepProgressBarActions from '@/components/StepProgressBarActions';
 import HotelDatePreview from './HotelDatePreview';
 import HotelRoomSelection from './HotelRoomSelection';
 import HotelRoomScenicSelection from './HotelRoomScenicSelection';
@@ -10,7 +10,7 @@ export default {
   components: {
     HotelDatePreview,
     HotelRoomSelection,
-    ReservationStepsActions,
+    StepProgressBarActions,
     HotelRoomScenicSelection,
   },
   data() {
@@ -121,7 +121,7 @@ export default {
       @selectedRoomScenic="setSelectedRoomScenic"
     />
 
-    <reservation-steps-actions
+    <step-progress-bar-actions
       class="pt-6"
       @nextStep="saveAndContinue"
       @previousStep="goToPreviousStep"

@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
-import ReservationStepsActions from '@/components/ReservationStepsActions';
+import StepProgressBarActions from '@/components/StepProgressBarActions';
 import HotelReservationPreview from '@/components/HotelReservationPreview';
 import PaymentForm from './PaymentForm';
 
@@ -8,8 +8,8 @@ export default {
   name: 'HotelPreviewAndPayment',
   components: {
     PaymentForm,
+    StepProgressBarActions,
     HotelReservationPreview,
-    ReservationStepsActions,
   },
   data() {
     return {
@@ -93,7 +93,7 @@ export default {
       </v-col>
     </v-row>
 
-    <reservation-steps-actions
+    <step-progress-bar-actions
       class="pt-6"
       @nextStep="submit"
       @previousStep="goToPreviousStep"

@@ -1,13 +1,13 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
 import DatePicker from '@/components/DatePicker';
-import ReservationStepsActions from '@/components/ReservationStepsActions';
+import StepProgressBarActions from '@/components/StepProgressBarActions';
 
 export default {
   name: 'HotelDateSelection',
   components: {
     DatePicker,
-    ReservationStepsActions,
+    StepProgressBarActions,
   },
   data() {
     return {
@@ -147,7 +147,7 @@ export default {
       </v-form>
     </v-card>
 
-    <reservation-steps-actions
+    <step-progress-bar-actions
       class="pt-6"
       @nextStep="saveAndContinue"
     />
