@@ -59,6 +59,7 @@ export default {
                 :name="formData.card_name"
                 :cvv="formData.card_cvv"
                 :date="creditCardDate"
+                class="d-none d-sm-flex"
               />
             </v-col>
 
