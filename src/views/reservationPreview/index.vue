@@ -1,5 +1,5 @@
 <script>
-import { mapMutations } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 import AppHotelReservationPreview from '@/components/AppHotelReservationPreview';
 import AppConfirmDialog from '@/components/AppConfirmDialog';
 import ReservationPreviewActions from './components/ReservationPreviewActions';
@@ -15,6 +15,14 @@ export default {
     return {
       isConfirmDialogVisible: false,
     };
+  },
+  computed: {
+    ...mapState(['reservationInformation']),
+  },
+  created() {
+    if (!this.reservationInformation.hotel) {
+      this.$router.replace('/');
+    }
   },
   methods: {
     ...mapMutations(['clearReservation', 'setReservationStep']),
