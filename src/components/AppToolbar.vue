@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'AppBar',
+  name: 'AppToolbar',
 };
 </script>
 

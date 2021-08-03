@@ -1,14 +1,14 @@
 <script>
 import { mapActions, mapState } from 'vuex';
-import ReservationSteps from '@/components/ReservationSteps';
+import StepProgressBar from '@/components/StepProgressBar';
 import HotelDateSelection from './components/HotelDateSelection';
-import HotelRoomAndViewSelection from './components/HotelRoomAndViewSelection';
 import HotelPreviewAndPayment from './components/HotelPreviewAndPayment';
+import HotelRoomAndViewSelection from './components/HotelRoomAndViewSelection';
 
 export default {
   name: 'NewReservation',
   components: {
-    ReservationSteps,
+    StepProgressBar,
     HotelDateSelection,
     HotelPreviewAndPayment,
     HotelRoomAndViewSelection,
@@ -28,12 +28,20 @@ export default {
 
 <template>
   <div class="mx-16">
-    <reservation-steps class="mb-5" />
+    <step-progress-bar
+      class="mb-5"
+    />
 
-    <hotel-date-selection v-if="reservationStep == 1" />
+    <hotel-date-selection
+      v-if="reservationStep == 1"
+    />
 
-    <hotel-room-and-view-selection v-if="reservationStep == 2" />
+    <hotel-room-and-view-selection
+      v-if="reservationStep == 2"
+    />
 
-    <hotel-preview-and-payment v-if="reservationStep == 3" />
+    <hotel-preview-and-payment
+      v-if="reservationStep == 3"
+    />
   </div>
 </template>

@@ -1,17 +1,17 @@
 <script>
-import AppBar from '@/components/AppBar';
+import AppToolbar from '@/components/AppToolbar';
 
 export default {
   name: 'App',
   components: {
-    AppBar,
+    AppToolbar,
   },
 };
 </script>
 
 <template>
   <v-app>
-    <app-bar />
+    <app-toolbar />
 
     <v-main class="ma-16">
       <router-view />
