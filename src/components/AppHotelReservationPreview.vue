@@ -73,6 +73,8 @@ export default {
 
               this.$emit('coupon', this.coupon);
               this.showSnackbar('Kupon Başarıyla Tanımlandı', 'success');
+            } else {
+              this.showSnackbar('Girilen Kupon Kodunun Süresi Dolmuştur. Lütfen Farklı Bir Kupon Kodu İle Devam Ediniz', 'info');
             }
           }
         })

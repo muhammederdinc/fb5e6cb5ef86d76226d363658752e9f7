@@ -6,7 +6,7 @@ export default {
       snackbar: {
         visibility: false,
         message: '',
-        displayTime: 4000,
+        displayTime: 5000,
         type: '',
       },
     };
