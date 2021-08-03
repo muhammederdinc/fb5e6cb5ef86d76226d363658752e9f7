@@ -7,6 +7,8 @@ export default {
   },
   setCreditCard(state, creditCard) {
     state.creditCard = creditCard;
+
+    localStorage.setItem('creditCard', creditCard);
   },
   goToNextStep(state, reservationInformation) {
     state.reservationInformation = {
@@ -26,6 +28,12 @@ export default {
     state.reservationInformation = {};
     state.reservationStep = 1;
 
-    localStorage.clear();
+    localStorage.removeItem('reservationStep');
+    localStorage.removeItem('reservationInformation');
+  },
+  setReservationStep(state, reservationStep) {
+    state.reservationStep = reservationStep;
+
+    localStorage.setItem('reservationStep', reservationStep);
   },
 };

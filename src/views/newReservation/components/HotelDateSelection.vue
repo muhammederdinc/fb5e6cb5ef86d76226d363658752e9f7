@@ -113,7 +113,7 @@ export default {
               <v-col cols="3">
                 <date-picker
                   v-model="formData.end_date"
-                  :selected="formData.start_date"
+                  :selected="formData.end_date"
                   :rules="dateRules"
                   label="Çıkış Tarihi"
                 />

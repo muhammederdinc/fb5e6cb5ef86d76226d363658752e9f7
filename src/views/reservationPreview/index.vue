@@ -10,9 +10,13 @@ export default {
     ReservationPreviewActions,
   },
   methods: {
-    ...mapMutations(['clearReservation']),
+    ...mapMutations(['clearReservation', 'setReservationStep']),
     createReservation() {
       this.clearReservation();
+      this.$router.push('/new-reservation');
+    },
+    updateReservation() {
+      this.setReservationStep(1);
       this.$router.push('/new-reservation');
     },
   },
@@ -24,6 +28,7 @@ export default {
     <reservation-preview-actions
       class="mx-16"
       @newReservation="createReservation"
+      @updateReservation="updateReservation"
     />
 
     <hotel-reservation-preview

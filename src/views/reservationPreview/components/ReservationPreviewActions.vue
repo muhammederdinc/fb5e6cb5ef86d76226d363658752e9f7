@@ -40,6 +40,7 @@ export default {
       <v-btn
         v-text="'Rezervasyonu Güncelle'"
         color="primary"
+        @click="$emit('updateReservation')"
       />
 
       <v-btn
