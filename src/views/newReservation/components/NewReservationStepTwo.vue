@@ -6,7 +6,7 @@ import HotelRoomSelection from './HotelRoomSelection';
 import HotelRoomScenicSelection from './HotelRoomScenicSelection';
 
 export default {
-  name: 'HotelRoomAndViewSelection',
+  name: 'NewReservationStepTwo',
   components: {
     HotelDatePreview,
     HotelRoomSelection,

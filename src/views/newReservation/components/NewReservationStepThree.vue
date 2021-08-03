@@ -5,7 +5,7 @@ import HotelReservationPreview from '@/components/HotelReservationPreview';
 import PaymentForm from './PaymentForm';
 
 export default {
-  name: 'HotelPreviewAndPayment',
+  name: 'NewReservationStepThree',
   components: {
     PaymentForm,
     StepProgressBarActions,

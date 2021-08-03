@@ -4,7 +4,7 @@ import DatePicker from '@/components/DatePicker';
 import StepProgressBarActions from '@/components/StepProgressBarActions';
 
 export default {
-  name: 'HotelDateSelection',
+  name: 'NewReservationStepOne',
   components: {
     DatePicker,
     StepProgressBarActions,
