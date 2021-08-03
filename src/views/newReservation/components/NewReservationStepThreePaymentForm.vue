@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'PaymentForm',
+  name: 'NewReservationStepThreePaymentForm',
   props: {
     formData: {
       type: Object,

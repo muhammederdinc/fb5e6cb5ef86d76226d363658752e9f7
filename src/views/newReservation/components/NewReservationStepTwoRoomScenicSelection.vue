@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'HotelRoomScenicSelection',
+  name: 'NewReservationStepTwoRoomScenicSelection',
   props: {
     roomList: {
       type: Array,

@@ -1,17 +1,17 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
 import StepProgressBarActions from '@/components/StepProgressBarActions';
-import HotelDatePreview from './HotelDatePreview';
-import HotelRoomSelection from './HotelRoomSelection';
-import HotelRoomScenicSelection from './HotelRoomScenicSelection';
+import NewReservationStepTwoPreview from './NewReservationStepTwoPreview';
+import NewReservationStepTwoRoomSelection from './NewReservationStepTwoRoomSelection';
+import NewReservationStepTwoRoomScenicSelection from './NewReservationStepTwoRoomScenicSelection';
 
 export default {
   name: 'NewReservationStepTwo',
   components: {
-    HotelDatePreview,
-    HotelRoomSelection,
     StepProgressBarActions,
-    HotelRoomScenicSelection,
+    NewReservationStepTwoPreview,
+    NewReservationStepTwoRoomSelection,
+    NewReservationStepTwoRoomScenicSelection,
   },
   data() {
     return {
@@ -103,19 +103,19 @@ export default {
 
 <template>
   <div>
-    <hotel-date-preview
+    <new-reservation-step-two-preview
       v-if="reservationInformation.hotel"
       :reservation="reservation"
     />
 
-    <hotel-room-selection
+    <new-reservation-step-two-room-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_type"
       :reservation="reservation"
       :selected-room-id="formData.room.id || 0"
       @selectedRoom="setSelectedRoom"
     />
 
-    <hotel-room-scenic-selection
+    <new-reservation-step-two-room-scenic-selection
       :room-list="getHotelDetailById(reservationInformation.hotel.id).room_scenic"
       :selected-room-scenic-id="formData.roomScenic.id || 0"
       @selectedRoomScenic="setSelectedRoomScenic"

@@ -2,14 +2,14 @@
 import { mapActions, mapMutations, mapState } from 'vuex';
 import StepProgressBarActions from '@/components/StepProgressBarActions';
 import HotelReservationPreview from '@/components/HotelReservationPreview';
-import PaymentForm from './PaymentForm';
+import NewReservationStepThreePaymentForm from './NewReservationStepThreePaymentForm';
 
 export default {
   name: 'NewReservationStepThree',
   components: {
-    PaymentForm,
     StepProgressBarActions,
     HotelReservationPreview,
+    NewReservationStepThreePaymentForm,
   },
   data() {
     return {
@@ -78,7 +78,7 @@ export default {
   <div>
     <v-row>
       <v-col cols="7">
-        <payment-form
+        <new-reservation-step-three-payment-form
           ref="paymentForm"
           :form-data="formData"
           @changeUserCardPreference="setIsSaveCardInfo"
