@@ -21,6 +21,11 @@ export default {
   },
   computed: {
     ...mapState(['reservationInformation', 'creditCard']),
+    reservationPrice() {
+      const { price } = this.formData;
+
+      return { price };
+    },
   },
   created() {
     if (this.creditCard.card_number) this.formData = this.creditCard;
@@ -39,24 +44,23 @@ export default {
       } = this.reservationInformation;
 
       if (isDataValid) {
-        const params = {
-          ...otherParams,
-          ...this.formData,
-          hotel_id: this.reservationInformation.hotel.id,
-          room_type: this.reservationInformation.room.id,
-          room_scenic: this.reservationInformation.roomScenic.id,
-        };
+        const params = this.getCreateReservationParams(otherParams);
 
-        if (this.isSaveCardInfo) this.updateReservationInformation();
+        this.saveCreditCard();
 
         this.submitHotelReservation(params)
           .then(() => {
-            const reservationParams = { price: this.formData.price };
-
-            this.goToNextStep(reservationParams);
+            this.goToNextStep(this.reservationPrice);
             this.$router.push('/reservation-preview');
             this.showSnackbar('Ödeme İşleminiz Başarıyla Gerçekleştirildi', 'success');
           });
+      }
+    },
+    saveCreditCard() {
+      if (this.isSaveCardInfo) {
+        const { coupon_code: couponCode, price, ...cardParams } = this.formData;
+
+        this.setCreditCard(cardParams);
       }
     },
     setTotalPrice(newTotalPrice) {
@@ -65,13 +69,17 @@ export default {
     setCouponCode(newCoupon) {
       this.formData.coupon_code = newCoupon.code;
     },
-    updateReservationInformation() {
-      const { coupon_code: couponCode, price, ...cardParams } = this.formData;
-
-      this.setCreditCard(cardParams);
-    },
     setUserCardPreference(isSaveCardInfo) {
       this.isSaveCardInfo = isSaveCardInfo;
+    },
+    getCreateReservationParams(otherParams) {
+      return {
+        ...otherParams,
+        ...this.formData,
+        hotel_id: this.reservationInformation.hotel.id,
+        room_type: this.reservationInformation.room.id,
+        room_scenic: this.reservationInformation.roomScenic.id,
+      };
     },
   },
 };
