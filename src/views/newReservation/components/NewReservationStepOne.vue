@@ -1,13 +1,13 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
-import DatePicker from '@/components/DatePicker';
-import StepProgressBarActions from '@/components/StepProgressBarActions';
+import AppDatePicker from '@/components/AppDatePicker';
+import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
 
 export default {
   name: 'NewReservationStepOne',
   components: {
-    DatePicker,
-    StepProgressBarActions,
+    AppDatePicker,
+    AppStepProgressBarActions,
   },
   data() {
     return {
@@ -49,7 +49,6 @@ export default {
   },
   methods: {
     ...mapMutations(['goToNextStep']),
-
     handleHotelChange({ id }) {
       const {
         city,
@@ -102,7 +101,7 @@ export default {
           <v-col cols="12">
             <v-row>
               <v-col cols="3">
-                <date-picker
+                <app-date-picker
                   v-model="formData.start_date"
                   :selected="formData.start_date"
                   :rules="dateRules"
@@ -111,7 +110,7 @@ export default {
               </v-col>
 
               <v-col cols="3">
-                <date-picker
+                <app-date-picker
                   v-model="formData.end_date"
                   :selected="formData.end_date"
                   :rules="dateRules"
@@ -147,7 +146,7 @@ export default {
       </v-form>
     </v-card>
 
-    <step-progress-bar-actions
+    <app-step-progress-bar-actions
       class="pt-6"
       @nextStep="saveAndContinue"
     />

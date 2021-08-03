@@ -1,6 +1,6 @@
 <script>
 import { mapActions, mapState } from 'vuex';
-import StepProgressBar from '@/components/StepProgressBar';
+import AppStepProgressBar from '@/components/AppStepProgressBar';
 import NewReservationStepOne from './components/NewReservationStepOne';
 import NewReservationStepThree from './components/NewReservationStepThree';
 import NewReservationStepTwo from './components/NewReservationStepTwo';
@@ -8,7 +8,7 @@ import NewReservationStepTwo from './components/NewReservationStepTwo';
 export default {
   name: 'NewReservation',
   components: {
-    StepProgressBar,
+    AppStepProgressBar,
     NewReservationStepOne,
     NewReservationStepTwo,
     NewReservationStepThree,
@@ -28,7 +28,7 @@ export default {
 
 <template>
   <div class="mx-16">
-    <step-progress-bar
+    <app-step-progress-bar
       class="mb-5"
     />
 

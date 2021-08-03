@@ -1,6 +1,6 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
-import StepProgressBarActions from '@/components/StepProgressBarActions';
+import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
 import NewReservationStepTwoPreview from './NewReservationStepTwoPreview';
 import NewReservationStepTwoRoomSelection from './NewReservationStepTwoRoomSelection';
 import NewReservationStepTwoRoomScenicSelection from './NewReservationStepTwoRoomScenicSelection';
@@ -8,7 +8,7 @@ import NewReservationStepTwoRoomScenicSelection from './NewReservationStepTwoRoo
 export default {
   name: 'NewReservationStepTwo',
   components: {
-    StepProgressBarActions,
+    AppStepProgressBarActions,
     NewReservationStepTwoPreview,
     NewReservationStepTwoRoomSelection,
     NewReservationStepTwoRoomScenicSelection,
@@ -121,7 +121,7 @@ export default {
       @selectedRoomScenic="setSelectedRoomScenic"
     />
 
-    <step-progress-bar-actions
+    <app-step-progress-bar-actions
       class="pt-6"
       @nextStep="saveAndContinue"
       @previousStep="goToPreviousStep"

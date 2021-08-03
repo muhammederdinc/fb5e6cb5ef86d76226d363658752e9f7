@@ -2,7 +2,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'StepProgressBarActions',
+  name: 'AppStepProgressBarActions',
   computed: {
     ...mapState(['reservationStep']),
   },

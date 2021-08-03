@@ -1,13 +1,13 @@
 <script>
 import { mapMutations } from 'vuex';
-import HotelReservationPreview from '@/components/HotelReservationPreview';
+import AppHotelReservationPreview from '@/components/AppHotelReservationPreview';
 import ReservationPreviewActions from './components/ReservationPreviewActions';
 
 export default {
   name: 'ReservationPreview',
   components: {
-    HotelReservationPreview,
     ReservationPreviewActions,
+    AppHotelReservationPreview,
   },
   methods: {
     ...mapMutations(['clearReservation', 'setReservationStep']),
@@ -31,7 +31,7 @@ export default {
       @updateReservation="updateReservation"
     />
 
-    <hotel-reservation-preview
+    <app-hotel-reservation-preview
       class="mx-16"
       preview
     />

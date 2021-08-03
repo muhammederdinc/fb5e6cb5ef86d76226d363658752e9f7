@@ -2,7 +2,7 @@
 import { mapActions, mapState } from 'vuex';
 
 export default {
-  name: 'HotelReservationPreview',
+  name: 'AppHotelReservationPreview',
   props: {
     preview: {
       type: Boolean,

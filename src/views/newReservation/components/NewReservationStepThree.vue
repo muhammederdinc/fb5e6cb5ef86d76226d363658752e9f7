@@ -1,14 +1,14 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
-import StepProgressBarActions from '@/components/StepProgressBarActions';
-import HotelReservationPreview from '@/components/HotelReservationPreview';
+import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
+import AppHotelReservationPreview from '@/components/AppHotelReservationPreview';
 import NewReservationStepThreePaymentForm from './NewReservationStepThreePaymentForm';
 
 export default {
   name: 'NewReservationStepThree',
   components: {
-    StepProgressBarActions,
-    HotelReservationPreview,
+    AppStepProgressBarActions,
+    AppHotelReservationPreview,
     NewReservationStepThreePaymentForm,
   },
   data() {
@@ -86,14 +86,14 @@ export default {
       </v-col>
 
       <v-col cols="5">
-        <hotel-reservation-preview
+        <app-hotel-reservation-preview
           @totalPrice="setTotalPrice"
           @coupon="setCouponCode"
         />
       </v-col>
     </v-row>
 
-    <step-progress-bar-actions
+    <app-step-progress-bar-actions
       class="pt-6"
       @nextStep="submit"
       @previousStep="goToPreviousStep"
