@@ -56,7 +56,8 @@ export default {
             <v-col cols="12">
               <app-credit-card
                 :number="formData.card_number"
-                :ccv="formData.card_cvv"
+                :name="formData.card_name"
+                :cvv="formData.card_cvv"
                 :date="creditCardDate"
               />
             </v-col>

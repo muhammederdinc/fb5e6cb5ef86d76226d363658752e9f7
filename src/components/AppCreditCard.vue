@@ -10,13 +10,17 @@ export default {
       type: String,
       default: '1111 1235 1231 4561',
     },
-    ccv: {
+    cvv: {
       type: String,
       default: '123',
     },
     date: {
       type: String,
       default: '05/2017',
+    },
+    name: {
+      type: String,
+      default: 'Name',
     },
   },
   computed: {
@@ -28,8 +32,11 @@ export default {
 
       return `${one} ${two} ${three} ${four}`;
     },
-    creditCardCCV() {
-      return this.ccv.substring(0, 3);
+    creditCardCVV() {
+      return this.cvv.substring(0, 3);
+    },
+    creditCardName() {
+      return this.name.substring(0, 12);
     },
   },
 };
@@ -57,21 +64,19 @@ export default {
     />
 
     <v-col
-      class="d-flex credit-card__subtitle align-end pa-16"
-      cols="6"
+      class="d-flex credit-card__subtitle align-end py-16 px-10"
+      cols="9"
     >
-      <span class="mr-5">
-        {{ date }}
-      </span>
+      <span v-text="date" />
 
-      <span>
-        {{ creditCardCCV }}
-      </span>
+      <span v-text="creditCardCVV" class="mx-2" />
+
+      <span v-text="creditCardName" />
     </v-col>
 
     <v-col
       class="d-flex justify-end pa-10"
-      cols="6"
+      cols="3"
     >
       <img src="@/assets/masterCard.png" height="60">
     </v-col>
@@ -94,8 +99,6 @@ export default {
     font-size: 28px;
     font-weight: 400;
     opacity: 0.8;
-    padding-left: 20px;
-    padding-top: 20px;
   }
 
   &__subtitle {
