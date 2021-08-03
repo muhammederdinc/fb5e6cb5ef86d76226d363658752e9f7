@@ -2,6 +2,7 @@
 import { mapGetters, mapMutations, mapState } from 'vuex';
 import AppDatePicker from '@/components/AppDatePicker';
 import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
+import snackbarMixin from '@/mixins/snackbar';
 
 export default {
   name: 'NewReservationStepOne',
@@ -9,6 +10,7 @@ export default {
     AppDatePicker,
     AppStepProgressBarActions,
   },
+  mixins: [snackbarMixin],
   data() {
     return {
       formData: {
@@ -67,9 +69,16 @@ export default {
       }
     },
     saveAndContinue() {
-      const isDataValid = this.$refs.form.validate();
+      const startDate = new Date(this.formData.start_date);
+      const endDate = new Date(this.formData.end_date);
 
-      if (isDataValid) this.goToNextStep(this.formData);
+      if (startDate.getTime() < endDate.getTime()) {
+        const isDataValid = this.$refs.form.validate();
+
+        if (isDataValid) this.goToNextStep(this.formData);
+      } else {
+        this.showSnackbar('Bitiş Tarihi Başlangıç Tarihinden Sonra Olmalıdır', 'info');
+      }
     },
   },
 };
