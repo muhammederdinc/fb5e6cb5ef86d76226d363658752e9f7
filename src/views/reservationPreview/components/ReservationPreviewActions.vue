@@ -32,7 +32,11 @@ export default {
 
     <v-card-actions>
       <v-row justify="center">
-        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+        <v-col
+          cols="12" xs="12"
+          sm="12" md="4"
+          lg="3"
+        >
           <v-btn
             v-text="'Yeni Rezervasyon Yap'"
             color="primary"
@@ -41,7 +45,11 @@ export default {
           />
         </v-col>
 
-        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+        <v-col
+          cols="12" xs="12"
+          sm="12" md="4"
+          lg="3"
+        >
           <v-btn
             v-text="'Rezervasyonu Güncelle'"
             color="primary"
@@ -50,11 +58,16 @@ export default {
           />
         </v-col>
 
-        <v-col cols="12" xs="12" sm="12" md="4" lg="3">
+        <v-col
+          cols="12" xs="12"
+          sm="12" md="4"
+          lg="3"
+        >
           <v-btn
             v-text="'Rezervasyonu İptal Et'"
             color="primary"
             block
+            @click="$emit('cancelReservation')"
           />
         </v-col>
       </v-row>

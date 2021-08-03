@@ -1,13 +1,20 @@
 <script>
 import { mapMutations } from 'vuex';
 import AppHotelReservationPreview from '@/components/AppHotelReservationPreview';
+import AppConfirmDialog from '@/components/AppConfirmDialog';
 import ReservationPreviewActions from './components/ReservationPreviewActions';
 
 export default {
   name: 'ReservationPreview',
   components: {
+    AppConfirmDialog,
     ReservationPreviewActions,
     AppHotelReservationPreview,
+  },
+  data() {
+    return {
+      isConfirmDialogVisible: false,
+    };
   },
   methods: {
     ...mapMutations(['clearReservation', 'setReservationStep']),
@@ -19,6 +26,10 @@ export default {
       this.setReservationStep(1);
       this.$router.push('/new-reservation');
     },
+    cancelReservation() {
+      this.clearReservation();
+      this.$router.push('/');
+    },
   },
 };
 </script>
@@ -29,11 +40,19 @@ export default {
       class="mx-16 mb-6"
       @newReservation="createReservation"
       @updateReservation="updateReservation"
+      @cancelReservation="isConfirmDialogVisible = true"
     />
 
     <app-hotel-reservation-preview
       class="mx-16"
       preview
+    />
+
+    <app-confirm-dialog
+      v-if="isConfirmDialogVisible"
+      text="Rezervasyon kaydınızı iptal etmek istediğinize emin misiniz?"
+      @cancel="isConfirmDialogVisible = false"
+      @confirm="cancelReservation"
     />
   </div>
 </template>
