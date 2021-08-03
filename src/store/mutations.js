@@ -36,4 +36,7 @@ export default {
 
     localStorage.setItem('reservationStep', reservationStep);
   },
+  setSnackbar(state, params) {
+    state.snackbar = params;
+  },
 };

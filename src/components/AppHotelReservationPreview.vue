@@ -1,8 +1,10 @@
 <script>
 import { mapActions, mapState } from 'vuex';
+import snackbarMixin from '@/mixins/snackbar';
 
 export default {
   name: 'AppHotelReservationPreview',
+  mixins: [snackbarMixin],
   props: {
     preview: {
       type: Boolean,
@@ -70,6 +72,7 @@ export default {
               this.coupon = data;
 
               this.$emit('coupon', this.coupon);
+              this.showSnackbar('Kupon Başarıyla Tanımlandı', 'success');
             }
           }
         })

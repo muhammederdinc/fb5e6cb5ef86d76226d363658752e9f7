@@ -1,5 +1,6 @@
 <script>
 import { mapActions, mapMutations, mapState } from 'vuex';
+import snackbarMixin from '@/mixins/snackbar';
 import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
 import AppHotelReservationPreview from '@/components/AppHotelReservationPreview';
 import NewReservationStepThreePaymentForm from './NewReservationStepThreePaymentForm';
@@ -11,6 +12,7 @@ export default {
     AppHotelReservationPreview,
     NewReservationStepThreePaymentForm,
   },
+  mixins: [snackbarMixin],
   data() {
     return {
       formData: {},
@@ -53,6 +55,7 @@ export default {
 
             this.goToNextStep(reservationParams);
             this.$router.push('/reservation-preview');
+            this.showSnackbar('Ödeme İşleminiz Başarıyla Gerçekleştirildi', 'success');
           });
       }
     },

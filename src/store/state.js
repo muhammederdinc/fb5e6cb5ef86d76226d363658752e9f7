@@ -1,4 +1,5 @@
 export default {
+  snackbar: {},
   hotelList: [],
   hotelDetailList: [],
   creditCard: JSON.parse(localStorage.getItem('creditCard')) || {},

@@ -1,5 +1,6 @@
 <script>
 import { mapGetters, mapMutations, mapState } from 'vuex';
+import snackbarMixin from '@/mixins/snackbar';
 import AppStepProgressBarActions from '@/components/AppStepProgressBarActions';
 import NewReservationStepTwoPreview from './NewReservationStepTwoPreview';
 import NewReservationStepTwoRoomSelection from './NewReservationStepTwoRoomSelection';
@@ -13,6 +14,7 @@ export default {
     NewReservationStepTwoRoomSelection,
     NewReservationStepTwoRoomScenicSelection,
   },
+  mixins: [snackbarMixin],
   data() {
     return {
       formData: {
@@ -72,7 +74,7 @@ export default {
 
         this.goToNextStep(params);
       } else {
-        // to-do warning
+        this.showSnackbar('Lütfen Oda Ve Manzara Seçimini Yapınız', 'info');
       }
     },
     setSelectedRoom(selectedRoom) {
