@@ -1,6 +1,11 @@
 <script>
+import AppCreditCard from '@/components/AppCreditCard';
+
 export default {
   name: 'NewReservationStepThreePaymentForm',
+  components: {
+    AppCreditCard,
+  },
   props: {
     formData: {
       type: Object,
@@ -54,7 +59,9 @@ export default {
         >
           <v-row>
             <v-col cols="12">
-              Card
+              <app-credit-card
+                :number="formData.card_number"
+              />
             </v-col>
 
             <v-col cols="12">
