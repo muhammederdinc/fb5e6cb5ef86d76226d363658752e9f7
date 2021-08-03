@@ -10,7 +10,7 @@ export default {
   data() {
     return {
       months: ['Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran', 'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'],
-      years: [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+      years: [2022, 2023, 2024, 2025, 2026, 2027, 2028],
       requiredFieldRules: [
         (v) => !!v || 'Bu alanın doldurulması zorunludur',
       ],
