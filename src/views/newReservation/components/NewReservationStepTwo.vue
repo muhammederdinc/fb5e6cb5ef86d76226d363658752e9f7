@@ -80,10 +80,10 @@ export default {
     },
     getPrice() {
       const { roomScenic } = this.formData;
+      const { adult, child } = this.reservationInformation;
       const additionalPrice = (this.accommodationPrice * roomScenic.price_rate) / 100;
-      const result = this.accommodationPrice + additionalPrice;
 
-      return result;
+      return (this.accommodationPrice + additionalPrice) * (adult + child);
     },
   },
 };

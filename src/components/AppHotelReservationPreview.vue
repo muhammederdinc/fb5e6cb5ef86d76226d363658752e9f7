@@ -27,10 +27,9 @@ export default {
       return `${hotel.hotel_name} (${city})`;
     },
     accommodationPrice() {
-      const { room } = this.reservationInformation;
-      const dayCount = this.durationOfStay;
+      const { room, adult, child } = this.reservationInformation;
 
-      return room.price * dayCount;
+      return room.price * this.durationOfStay * (adult + child);
     },
     totalPrice() {
       const { price } = this.reservationInformation;

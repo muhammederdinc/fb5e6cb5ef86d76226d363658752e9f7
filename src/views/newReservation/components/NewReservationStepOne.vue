@@ -46,6 +46,13 @@ export default {
   },
   created() {
     if (this.reservationInformation.hotel) {
+      const {
+        child_status: childStatus,
+        max_adult_size: maxAdultSize,
+      } = this.getHotelDetailById(this.reservationInformation.hotel.id);
+
+      this.childStatus = childStatus;
+      this.maxAdultSize = maxAdultSize;
       this.formData = this.reservationInformation;
     }
   },
