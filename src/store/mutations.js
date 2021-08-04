@@ -26,6 +26,7 @@ export default {
   },
   clearReservation(state) {
     state.reservationInformation = {};
+    state.definedCoupon = null;
     state.reservationStep = 1;
 
     localStorage.removeItem('reservationStep');
@@ -38,5 +39,8 @@ export default {
   },
   setSnackbar(state, params) {
     state.snackbar = params;
+  },
+  setDefinedCoupon(state, coupon) {
+    state.definedCoupon = coupon;
   },
 };
