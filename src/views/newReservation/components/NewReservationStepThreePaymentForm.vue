@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     creditCardDate() {
-      const { card_date_month: month, card_date_year: year } = this.formData;
+      const { card_date_month: month = 'XX', card_date_year: year = 'XX' } = this.formData;
 
       return `${month}/${year}`;
     },

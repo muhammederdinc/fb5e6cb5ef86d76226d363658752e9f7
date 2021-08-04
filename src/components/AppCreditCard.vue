@@ -8,19 +8,19 @@ export default {
     },
     number: {
       type: String,
-      default: '1111 1235 1231 4561',
+      default: 'XXXXXXXXXXXXXXXX',
     },
     cvv: {
       type: String,
-      default: '123',
+      default: 'XXX',
     },
     date: {
       type: String,
-      default: '05/2017',
+      default: 'XX/XXXX',
     },
     name: {
       type: String,
-      default: 'Name',
+      default: 'XXXXXXXX',
     },
   },
   computed: {
