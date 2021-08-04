@@ -25,14 +25,14 @@ export default {
   },
   computed: {
     creditCardNumber() {
-      const one = this.number.substring(0, 4);
-      const two = this.number.substring(4, 8);
-      const three = this.number.substring(8, 12);
-      const four = this.number.substring(12, 16);
+      const firstSlice = this.number.substring(0, 4);
+      const secondSlice = this.number.substring(4, 8);
+      const thirdSlice = this.number.substring(8, 12);
+      const fourthSlice = this.number.substring(12, 16);
 
-      return `${one} ${two} ${three} ${four}`;
+      return `${firstSlice} ${secondSlice} ${thirdSlice} ${fourthSlice}`;
     },
-    creditCardCVV() {
+    creditCardCvv() {
       return this.cvv.substring(0, 3);
     },
     creditCardName() {
@@ -69,7 +69,7 @@ export default {
     >
       <span v-text="date" />
 
-      <span v-text="creditCardCVV" class="mx-2" />
+      <span v-text="creditCardCvv" class="mx-2" />
 
       <span v-text="creditCardName" />
     </v-col>
