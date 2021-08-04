@@ -1,5 +1,10 @@
 <script>
-import { mapActions, mapGetters, mapState } from 'vuex';
+import {
+  mapState,
+  mapActions,
+  mapGetters,
+  mapMutations,
+} from 'vuex';
 import snackbarMixin from '@/mixins/snackbar';
 
 export default {
@@ -14,12 +19,11 @@ export default {
   data() {
     return {
       discountCode: '',
-      coupon: null,
       isLoading: false,
     };
   },
   computed: {
-    ...mapState(['reservationInformation']),
+    ...mapState(['reservationInformation', 'definedCoupon']),
     ...mapGetters(['durationOfStay']),
     title() {
       const { hotel, city } = this.reservationInformation;
@@ -33,7 +37,8 @@ export default {
     },
     totalPrice() {
       const { price } = this.reservationInformation;
-      const discount = this.coupon ? this.coupon.discount_ammount : 0;
+      const discount = this.definedCoupon && !this.preview
+        ? this.definedCoupon.discount_ammount : 0;
       const result = price - discount;
 
       this.$emit('totalPrice', result);
@@ -41,27 +46,32 @@ export default {
       return result;
     },
   },
+  created() {
+    if (this.definedCoupon) this.discountCode = this.definedCoupon.code;
+  },
   methods: {
     ...mapActions(['checkCoupon']),
+    ...mapMutations(['setDefinedCoupon']),
     checkCouponByDiscountCode() {
       this.isLoading = true;
 
       this.checkCoupon(this.discountCode)
         .then(([data]) => {
-          this.coupon = null;
+          this.setDefinedCoupon(null);
 
           if (data && data.id) {
             const couponExpirationDate = new Date(data.expiration_at);
             const currentDate = new Date();
 
             if (currentDate.getTime() < couponExpirationDate.getTime()) {
-              this.coupon = data;
-
-              this.$emit('coupon', this.coupon);
+              this.$emit('coupon', data);
+              this.setDefinedCoupon(data);
               this.showSnackbar('Kupon Başarıyla Tanımlandı', 'success');
             } else {
               this.showSnackbar('Girilen Kupon Kodunun Süresi Dolmuştur. Lütfen Farklı Bir Kupon Kodu İle Devam Ediniz', 'info');
             }
+          } else {
+            this.showSnackbar('Girilen Kupon Kodu Hatalıdır', 'info');
           }
         })
         .finally(() => {
@@ -141,7 +151,7 @@ export default {
               class="ma-3"
               color="primary"
               :loading="isLoading"
-              :disabled="discountCode.length < 1"
+              :disabled="discountCode && discountCode.length < 1"
               @click="checkCouponByDiscountCode"
             >
               Kodu Kullan
@@ -176,13 +186,13 @@ export default {
                 {{ accommodationPrice | currency }}
               </v-col>
 
-              <template v-if="coupon">
+              <template v-if="definedCoupon">
                 <v-col class="text-start" cols="6">
-                  {{ `İndirim (${coupon.code})` }}
+                  {{ `İndirim (${definedCoupon.code})` }}
                 </v-col>
 
                 <v-col class="text-end" cols="6">
-                  - {{ coupon.discount_ammount | currency }}
+                  - {{ definedCoupon.discount_ammount | currency }}
                 </v-col>
               </template>
 
